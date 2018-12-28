@@ -1,59 +1,34 @@
-# Viprofix
-BOT PROTECT CREATOR & ADMIN
+# Line半垢製作教學
 ------
-GET TOKEN :
+取得Line代碼 (TOKEN) :
 ------
-- `Google Chrome`
-- `http://101.255.95.249:6969`
+- `https://github.com/ningxue520/linetoken`
+- `影片教學: https://www.youtube.com/watch?v=2gD4dELfVQo`
 -
-Cara Install Bot Vipro :
+如何製作Line半垢/半人機 :
 ------
-Di C9 :
-- Ketik -> `sudo apt-get update`
-- Ketik -> `sudo apt-get install git`
-- Ketik -> `sudo apt-get install python-sofware-properties`
-- Ketik -> `sudo pip install rsa`
-- Ketik -> `sudo pip install thrift==0.9.3`
-- Ketik -> `sudo pip install requests`
-- Ketik -> `sudo pip install requests==2.5.3`
-- Ketik -> `sudo pip install bs4`
-- Ketik -> `sudo pip install gtts`
-- Ketik -> `sudo pip install googletrans`
-- Ketik -> `git clone https://github.com/Gendjex/vipro2`
-- Ketik -> `cd vipro2`
-- Ketik -> `python vipro.py`
+- `pkg update`
+- `pkg install git`
+- `pkg install python2`
+- `pip2 install rsa`
+- `pip2 install thrift==0.9.3`
+- `pip2 install requests`
+- `pip2 install bs4`
+- `pip2 install gtts`
+- `pip2 install beautifulsoup`
+- `pip2 install googletrans`
+- `git clone https://github.com/ningxue520/ningxue`
+- `cd ningxue`
+- `python2 ningxue.py`
 
-Di Termux :
-- Ketik -> `pkg update`
-- Ketik -> `pkg install git`
-- Ketik -> `pkg install python2`
-- Ketik -> `pip2 install rsa`
-- Ketik -> `pip2 install thrift==0.9.3`
-- Ketik -> `pip2 install requests`
-- Ketik -> `pip2 install bs4`
-- Ketik -> `pip2 install gtts`
-- Ketik -> `pip2 install beautifulsoup`
-- Ketik -> `pip2 install googletrans`
-- Ketik -> `git clone https://github.com/Gendjex/vipro2`
-- Ketik -> `cd vipro2`
-- Ketik -> `python2 vipro.py`
-
-Cara Menjalankan Bot Kembali :
+如何再次取得代碼 (主機重啟後) :
 ------
-Di C9 :
-- Ketik -> `cd vipro2`
-- Ketik -> `python vipro.py`
+- `cd ningxue`
+- `python2 ningxue.py`
 
-Di Termux :
-- Ketik -> `cd vipro2`
-- Ketik -> `python2 vipro.py`
-
-
-Credit By@ Vipro.
+教學影片 :
 ------
-- `Add My ID LINE : gjxvipro`
-
-Thx To :
-------
-- `LINE-TCR TEAM`
+- `https://www.youtube.com/watch?v=2gD4dELfVQo`
+- `以上教學方法由Vipro提供，漢化版由凝雪製作`
+- `感謝LINE-TCR TEAM`
 
