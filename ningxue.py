@@ -89,14 +89,14 @@ mediaMessage ="""
 ╠➩〘musrik Judul-Penyanyi〙
 ╠➩〘ig UrsnameInstagram〙
 ╠➩〘Checkig UrsnameInstagram〙
-╠➩〘apakah Text (Kerang Ajaib)〙
-╠➩〘kapan Text (Kerang Ajaib)〙
-╠➩〘hari Text (Kerang Ajaib)〙
-╠➩〘berapa Text (Kerang Ajaib)〙
-╠➩〘berapakah Text〙
-╠➩〘Youtube Judul Video〙
-╠➩〘Youtubevideo Judul Video〙
-╠➩〘Youtubesearch:0 Judul Video〙
+╠➩〘停用〙
+╠➩〘停用〙
+╠➩〘停用〙
+╠➩〘停用〙
+╠➩〘停用〙
+╠➩〘Youtube Judul Video [Youtube影片標題]〙
+╠➩〘Youtubevideo Judul Video [Youtube影片標題]〙
+╠➩〘Youtubesearch:0 Judul Video [Youtube搜尋影片]〙
 ╠➩〘Image NamaGambar〙
 ╠➩〘Say Text〙
 ╠➩〘Say-en Text〙
@@ -151,16 +151,16 @@ vip="需要自己輸入，別把引號刪了"
 
 setMessage ="""
 ╔═══════════════
-║              ☆☞ S E T ☜☆
+║       ♓ 設定 ♓
 ╠═══════════════
-╠➩〘Notif on/off〙
-╠➩〘Mimic on/off〙
-╠➩〘Url on/off〙
-╠➩〘Alwaysread on/off〙
-╠➩〘Sider on/off〙
-╠➩〘Contact on/off〙
-╠➩〘Sticker on〙
-╠➩〘Simisimi on/off〙
+╠➩〘Notif on/off [通知開/關]〙
+╠➩〘Mimic on/off [摹擬開/關]〙
+╠➩〘Url on/off [網址開/關]〙
+╠➩〘Alwaysread on/off [自動已讀開/關]〙
+╠➩〘Sider on/off [頁面開/關]〙
+╠➩〘Contact on/off [友資傳送開/關]〙
+╠➩〘Sticker on [貼圖傳送開/關]〙
+╠➩〘Simisimi on/off [西米西米開/關]〙
 ╠═══════════════
 ║         ღ 凝雪半垢 ღ
 ║ ✡ https://www.youtube.com/channel/UCxaaoIPO9VdAkW5EHJepbGQ✡
@@ -169,17 +169,17 @@ setMessage ="""
 
 creatorMessage ="""
 ╔═══════════════
-║         ☆☞ C R E A T O R ☜☆
+║       ♓ 創作者指令 ♓
 ╠═══════════════
 ╠➩〘Crash〙
-╠➩〘Kickall〙
+╠➩〘Kickall [翻群]〙
 ╠➩〘Bc: (Text)〙
-╠➩〘Join group: (NamaGroup〙
-╠➩〘Leave group: (NamaGroup〙
+╠➩〘Join group: (群主名稱)〙
+╠➩〘Leave group: (群主名稱)〙
 ╠➩〘Leave all group〙
 ╠➩〘Tag on/off〙
-╠➩〘Bot restart〙
-╠➩〘Turn off〙
+╠➩〘Bot restart [機器人重開]〙
+╠➩〘Turn off [關機]〙
 ╠═══════════════
 ║         ღ 凝雪半垢 ღ
 ║ ✡ https://www.youtube.com/channel/UCxaaoIPO9VdAkW5EHJepbGQ✡
@@ -188,9 +188,9 @@ creatorMessage ="""
 
 adminMessage ="""
 ╔═══════════════
-║            ☆☞ A D M I N ☜☆
+║       ♓ 管理員指令 ♓
 ╠═══════════════
-╠➩〘Allprotect on/off〙
+╠➩〘Allprotect on/off [防翻全開/關]〙
 ╠➩〘Ban〙
 ╠➩〘Unban〙
 ╠➩〘Ban @〙
@@ -229,19 +229,19 @@ adminMessage ="""
 
 helpMessage ="""
 ╔═══════════════
-║              ☆☞ H E L P ☜☆
+║       ♓ 幫助指令 ♓
 ╠═══════════════
-╠➩〘Help self〙
-╠➩〘Help bot〙
-╠➩〘Help group〙
-╠➩〘Help set〙
-╠➩〘Help media〙
-╠➩〘Help admin〙
-╠➩〘Help creator〙
-╠➩〘Owner〙
-╠➩〘Speed〙
-╠➩〘Speed test〙
-╠➩〘Status〙
+╠➩〘Help self [基本指令]〙
+╠➩〘Help bot [半垢機設定]〙
+╠➩〘Help group [群組指令]〙
+╠➩〘Help set [設定]〙
+╠➩〘Help media [媒體指令]〙
+╠➩〘Help admin [管理員指令]〙
+╠➩〘Help creator [創作者指令]〙
+╠➩〘Owner [擁有者指令]〙
+╠➩〘Speed [檢查速度]〙
+╠➩〘Speed test [速度測試]〙
+╠➩〘Status [狀態]〙
 ╠═══════════════
 ║         ღ 凝雪半垢 ღ
 ║ ✡ https://www.youtube.com/channel/UCxaaoIPO9VdAkW5EHJepbGQ✡
