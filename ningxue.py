@@ -2392,49 +2392,49 @@ def bot(op):
                     if wait["lang"] == "JP":
                         ningxue.sendText(msg.to,"Can't be used outside the group")
                     else:
-                        vipro.sendText(msg.to,"Not for use less than group")
+                        ningxue.sendText(msg.to,"Not for use less than group")
 
 
             elif msg.text in ["timeline"]:
 		try:
-                    url = vipro.activity(limit=5)
-		    vipro.sendText(msg.to,url['result']['posts'][0]['postInfo']['postId'])
+                    url = ningxue.activity(limit=5)
+		    ningxue.sendText(msg.to,url['result']['posts'][0]['postInfo']['postId'])
 		except Exception as E:
 		    print E
 
             elif msg.text in ["@bye","@Bye"]:
-		    vipro.leaveGroup(msg.to)		    
+		    ningxue.leaveGroup(msg.to)		    
 		    
 
             elif msg.text in ["Absen"]:
-		vipro.sendText(msg.to,"Hadir!!")
+		ningxue.sendText(msg.to,"Hadir!!")
 
 
             elif msg.text.lower() in ["respon"]:
-                vipro.sendText(msg.to,responsename)
+                ningxue.sendText(msg.to,responsename)
 
             elif msg.text in ["Sp","Speed","speed"]:
                 start = time.time()
                 print("Speed")                
                 elapsed_time = time.time() - start
-		vipro.sendText(msg.to, "Progress...")
-                vipro.sendText(msg.to, "%sseconds" % (elapsed_time))
+		ningxue.sendText(msg.to, "Progress...")
+                ningxue.sendText(msg.to, "%sseconds" % (elapsed_time))
                 
             elif msg.text in ["Speed test"]:
                 start = time.time()
-                vipro.sendText(msg.to, "Progress...")
+                ningxue.sendText(msg.to, "Progress...")
                 elapsed_time = time.time() - start
-                vipro.sendText(msg.to, "%sseconds" % (elapsed_time))                
+                ningxue.sendText(msg.to, "%sseconds" % (elapsed_time))                
  
             elif msg.text in ["Ban"]:
                 if msg.from_ in admin:
                     wait["wblacklist"] = True
-                    vipro.sendText(msg.to,"send contact")
+                    ningxue.sendText(msg.to,"send contact")
 
             elif msg.text in ["Unban"]:
                 if msg.from_ in admin:
                     wait["dblacklist"] = True
-                    vipro.sendText(msg.to,"send contact")
+                    ningxue.sendText(msg.to,"send contact")
  
             elif "Ban @" in msg.text:
                 if msg.from_ in admin:
@@ -2442,13 +2442,13 @@ def bot(op):
                     print "@Ban by mention"
                     _name = msg.text.replace("Ban @","")
                     _nametarget = _name.rstrip('  ')
-                    gs = vipro.getGroup(msg.to)
+                    gs = ningxue.getGroup(msg.to)
                     targets = []
                     for g in gs.members:
                         if _nametarget == g.displayName:
                             targets.append(g.mid)
                     if targets == []:
-                        vipro.sendText(msg.to,"Not found")
+                        ningxue.sendText(msg.to,"Not found")
                     else:
                         for target in targets:
 			    if target not in admin:
@@ -2456,21 +2456,21 @@ def bot(op):
                                     wait["blacklist"][target] = True
                                     f=codecs.open('st2__b.json','w','utf-8')
                                     json.dump(wait["blacklist"], f, sort_keys=True, indent=4,ensure_ascii=False)
-                                    vipro.sendText(msg.to,"Succes BosQ")
+                                    ningxue.sendText(msg.to,"Succes BosQ")
                                 except:
-                                    vipro.sendText(msg.to,"Error")
+                                    ningxue.sendText(msg.to,"Error")
 			    else:
-				vipro.sendText(msg.to,"Admin Detected~")
+				ningxue.sendText(msg.to,"Admin Detected~")
  
             elif msg.text in ["Banlist","Ban list"]:
               if msg.from_ in admin:
                 if wait["blacklist"] == {}:
-                    vipro.sendText(msg.to,"Tidak Ada")
+                    ningxue.sendText(msg.to,"Tidak Ada")
                 else:
                     mc = ""
                     for mi_d in wait["blacklist"]:
-                        mc += "->" +vipro.getContact(mi_d).displayName + "\n"
-                    vipro.sendText(msg.to,"===[Blacklist User]===\n"+mc)
+                        mc += "->" +ningxue.getContact(mi_d).displayName + "\n"
+                    ningxue.sendText(msg.to,"===[Blacklist User]===\n"+mc)
 
  
             elif "Unban @" in msg.text:
@@ -2479,61 +2479,61 @@ def bot(op):
                 if msg.from_ in admin:
                     _name = msg.text.replace("Unban @","")
                     _nametarget = _name.rstrip('  ')
-                    gs = vipro.getGroup(msg.to)
+                    gs = ningxue.getGroup(msg.to)
                     targets = []
                     for g in gs.members:
                         if _nametarget == g.displayName:
                             targets.append(g.mid)
                     if targets == []:
-                        vipro.sendText(msg.to,"Not found")
+                        ningxue.sendText(msg.to,"Not found")
                     else:
                         for target in targets:
                             try:
                                 del wait["blacklist"][target]
                                 f=codecs.open('st2__b.json','w','utf-8')
                                 json.dump(wait["blacklist"], f, sort_keys=True, indent=4,ensure_ascii=False)
-                                vipro.sendText(msg.to,"Succes BosQ")
+                                ningxue.sendText(msg.to,"Succes BosQ")
                             except:
-                                vipro.sendText(msg.to,"Succes BosQ")
+                                ningxue.sendText(msg.to,"Succes BosQ")
                                 
                                 
             elif msg.text.lower() == 'clear ban':
                 if msg.from_ in admin:
                     wait["blacklist"] = {}
-                    vipro.sendText(msg.to,"ヽ( ^ω^)ﾉ└ ❉Unbanned All Success❉ ┐") 
+                    ningxue.sendText(msg.to,"ヽ( ^ω^)ﾉ└ ❉Unbanned All Success❉ ┐") 
 
  
             elif msg.text in ["Kill ban"]:
 		if msg.from_ in admin:
                     if msg.toType == 2:
-                        group = vipro.getGroup(msg.to)
+                        group = ningxue.getGroup(msg.to)
                         gMembMids = [contact.mid for contact in group.members]
                         matched_list = []
                         for tag in wait["blacklist"]:
                             matched_list+=filter(lambda str: str == tag, gMembMids)
                         if matched_list == []:
-                            vipro.sendText(msg.to,"There was no blacklist user")
+                            ningxue.sendText(msg.to,"There was no blacklist user")
                             return
                         for jj in matched_list:
-                            vipro.kickoutFromGroup(msg.to,[jj])
-                        vipro.sendText(msg.to,"Blacklist emang pantas tuk di usir")
+                            ningxue.kickoutFromGroup(msg.to,[jj])
+                        ningxue.sendText(msg.to,"Blacklist emang pantas tuk di usir")
 		else:
-		    vipro.sendText(msg.to, "Khusus creator")
+		    ningxue.sendText(msg.to, "Khusus creator")
  
             elif msg.text in ["Kill"]:
                     if msg.toType == 2:
                       if msg.from_ in admin:
-                        group = vipro.getGroup(msg.to)
+                        group = ningxue.getGroup(msg.to)
                         gMembMids = [contact.mid for contact in group.members]
                         matched_list = []
                         for tag in wait["blacklist"]:
                             matched_list+=filter(lambda str: str == tag, gMembMids)
                         if matched_list == []:
-                            vipro.sendText(msg.to,"Fuck You")
+                            ningxue.sendText(msg.to,"Fuck You")
                             return
                         for jj in matched_list:
                             try:
-                                vipro.kickoutFromGroup(msg.to,[jj])
+                                ningxue.kickoutFromGroup(msg.to,[jj])
                                 print (msg.to,[jj])
                             except:
                                 pass
@@ -2544,32 +2544,32 @@ def bot(op):
                      if msg.toType == 2:
                         print "Kick all member"
                         _name = msg.text.replace("Kickall","")
-                        gs = vipro.getGroup(msg.to)
-                        vipro.sendText(msg.to,"Dadaaah~")
+                        gs = ningxue.getGroup(msg.to)
+                        ningxue.sendText(msg.to,"Dadaaah~")
                         targets = []
                         for g in gs.members:
                             if _name in g.displayName:
                                 targets.append(g.mid)
                         if targets == []:
-                            vipro.sendText(msg.to,"Not found.")
+                            ningxue.sendText(msg.to,"Not found.")
                         else:
                             for target in targets:
 				if target not in admin:
                                     try:
-                                        vipro.kickoutFromGroup(msg.to,[target])
+                                        ningxue.kickoutFromGroup(msg.to,[target])
                                         print (msg.to,[g.mid])
                                     except Exception as e:
-                                        vipro.sendText(msg.to,str(e))
-			    vipro.inviteIntoGroup(msg.to, targets)
+                                        ningxue.sendText(msg.to,str(e))
+			    ningxue.inviteIntoGroup(msg.to, targets)
  
 
 	    elif msg.text in ["Bot restart","Reboot"]:
 		if msg.from_ in Creator:
-		    vipro.sendText(msg.to, "Bot Has Been Restarted...")
+		    ningxue.sendText(msg.to, "Bot Has Been Restarted...")
 		    restart_program()
 		    print "@Restart"
 		else:
-		    vipro.sendText(msg.to, "No Access")
+		    ningxue.sendText(msg.to, "No Access")
 		    
             elif msg.text in ["Turn off"]: 
 	        if msg.from_ in Creator:                
@@ -2583,36 +2583,36 @@ def bot(op):
             elif 'Crash' in msg.text:
               if msg.from_ in Creator:
                 msg.contentType = 13
-                msg.contentMetadata = {'mid': "vipro,'"}
-                vipro.sendMessage(msg)
+                msg.contentMetadata = {'mid': "ningxue,'"}
+                ningxue.sendMessage(msg)
 
  
             elif "copy @" in msg.text:
                    print "[COPY] Ok"
                    _name = msg.text.replace("copy @","")
                    _nametarget = _name.rstrip('  ')
-                   gs = vipro.getGroup(msg.to)
+                   gs = ningxue.getGroup(msg.to)
                    targets = []
                    for g in gs.members:
                        if _nametarget == g.displayName:
                            targets.append(g.mid)
                    if targets == []:
-                       vipro.sendText(msg.to, "Not Found...")
+                       ningxue.sendText(msg.to, "Not Found...")
                    else:
                        for target in targets:
                             try:
-                               vipro.CloneContactProfile(target)
-                               vipro.sendText(msg.to, "Copied (^_^)")
+                               ningxue.CloneContactProfile(target)
+                               ningxue.sendText(msg.to, "Copied (^_^)")
                             except Exception as e:
                                 print e
 
             elif msg.text in ["Mybackup"]:
                 try:
-                    vipro.updateDisplayPicture(backup1.pictureStatus)
-                    vipro.updateProfile(backup1)
-                    vipro.sendText(msg.to, "Done (^_^)")
+                    ningxue.updateDisplayPicture(backup1.pictureStatus)
+                    ningxue.updateProfile(backup1)
+                    ningxue.sendText(msg.to, "Done (^_^)")
                 except Exception as e:
-                    vipro.sendText(msg.to, str(e))
+                    ningxue.sendText(msg.to, str(e))
 
  
 	    elif "musik " in msg.text:
@@ -2623,10 +2623,10 @@ def bot(op):
 					data = json.loads(data)
 					for song in data:
 						abc = song[3].replace('https://','http://')
-						vipro.sendText(msg.to, "Title : " + song[0] + "\nLength : " + song[1] + "\nLink download : " + song[4])
-						vipro.sendText(msg.to, "Lagu " + song[0] + "\nSedang Di Prosses... Tunggu Sebentar ^_^ ")
-						vipro.sendAudioWithURL(msg.to,abc)
-						vipro.sendText(msg.to, "Selamat Mendengarkan Lagu " + song[0])
+						ningxue.sendText(msg.to, "Title : " + song[0] + "\nLength : " + song[1] + "\nLink download : " + song[4])
+						ningxue.sendText(msg.to, "Lagu " + song[0] + "\nSedang Di Prosses... Tunggu Sebentar ^_^ ")
+						ningxue.sendAudioWithURL(msg.to,abc)
+						ningxue.sendText(msg.to, "Selamat Mendengarkan Lagu " + song[0])
 	
             elif 'lirik ' in msg.text.lower():
                 try:
@@ -2640,9 +2640,9 @@ def bot(op):
                         hasil += song[0]
                         hasil += ')\n\n'
                         hasil += song[5]
-                        vipro.sendText(msg.to, hasil)
+                        ningxue.sendText(msg.to, hasil)
                 except Exception as wak:
-                        vipro.sendText(msg.to, str(wak))
+                        ningxue.sendText(msg.to, str(wak))
                         
 	    elif "musrik " in msg.text:
 					songname = msg.text.replace("musrik ","")
@@ -2656,16 +2656,16 @@ def bot(op):
 						hasil += song[0]
 						hasil += ')\n\n'
 						hasil += song[5]
-						vipro.sendText(msg.to, "Lagu " + song[0] + "\nSedang Di Prosses... Tunggu Sebentar ^_^ ")
-						vipro.sendAudioWithURL(msg.to,abc)
-						vipro.sendText(msg.to, "Title : " + song[0] + "\nLength : " + song[1] + "\nLink download : " + song[4] +"\n\n" + hasil)
-						vipro.sendText(msg.to, "Selamat Mendengarkan Lagu " + song[0])
+						ningxue.sendText(msg.to, "Lagu " + song[0] + "\nSedang Di Prosses... Tunggu Sebentar ^_^ ")
+						ningxue.sendAudioWithURL(msg.to,abc)
+						ningxue.sendText(msg.to, "Title : " + song[0] + "\nLength : " + song[1] + "\nLink download : " + song[4] +"\n\n" + hasil)
+						ningxue.sendText(msg.to, "Selamat Mendengarkan Lagu " + song[0])
              
             
             
             elif "Fancytext " in msg.text:
                     txt = msg.text.replace("Fancytext ", "")
-                    vipro.kedapkedip(msg.to,txt)
+                    ningxue.kedapkedip(msg.to,txt)
                     print "[Command] Kedapkedip"
 
 
@@ -2673,119 +2673,119 @@ def bot(op):
                 if msg.toType == 2:
                     cover = msg.text.replace("cover @","")
                     _nametarget = cover.rstrip('  ')
-                    gs = vipro.getGroup(msg.to)
+                    gs = ningxue.getGroup(msg.to)
                     targets = []
                     for g in gs.members:
                         if _nametarget == g.displayName:
                             targets.append(g.mid)
                     if targets == []:
-                        vipro.sendText(msg.to,"Not found")
+                        ningxue.sendText(msg.to,"Not found")
                     else:
                         for target in targets:
                             try:
-                                h = vipro.channel.getHome(target)
+                                h = ningxue.channel.getHome(target)
                                 objId = h["result"]["homeInfo"]["objectId"]
-                                vipro.sendImageWithURL(msg.to,"http://dl.profile.line-cdn.net/myhome/c/download.nhn?userid=" + target + "&oid=" + objId)
+                                ningxue.sendImageWithURL(msg.to,"http://dl.profile.line-cdn.net/myhome/c/download.nhn?userid=" + target + "&oid=" + objId)
                             except Exception as error:
                                 print error
-                                vipro.sendText(msg.to,"Upload image failed.")
+                                ningxue.sendText(msg.to,"Upload image failed.")
 
             elif "Cover @" in msg.text:
                 if msg.toType == 2:
                     cover = msg.text.replace("Cover @","")
                     _nametarget = cover.rstrip('  ')
-                    gs = vipro.getGroup(msg.to)
+                    gs = ningxue.getGroup(msg.to)
                     targets = []
                     for g in gs.members:
                         if _nametarget == g.displayName:
                             targets.append(g.mid)
                     if targets == []:
-                        vipro.sendText(msg.to,"Not found")
+                        ningxue.sendText(msg.to,"Not found")
                     else:
                         for target in targets:
                             try:
-                                h = vipro.channel.getHome(target)
+                                h = ningxue.channel.getHome(target)
                                 objId = h["result"]["homeInfo"]["objectId"]
-                                vipro.sendImageWithURL(msg.to,"http://dl.profile.line-cdn.net/myhome/c/download.nhn?userid=" + target + "&oid=" + objId)
+                                ningxue.sendImageWithURL(msg.to,"http://dl.profile.line-cdn.net/myhome/c/download.nhn?userid=" + target + "&oid=" + objId)
                             except Exception as error:
                                 print error
-                                vipro.sendText(msg.to,"Upload image failed.")
+                                ningxue.sendText(msg.to,"Upload image failed.")
                                 
             elif "Cpp" in msg.text:
                 if msg.from_ in admin:
-                    path = "vipro.jpg"
-                    vipro.sendText(msg.to,"Update PP :")
-                    vipro.sendImage(msg.to,path)
-                    vipro.updateProfilePicture(path)                                
+                    path = "ningxue.jpg"
+                    ningxue.sendText(msg.to,"Update PP :")
+                    ningxue.sendImage(msg.to,path)
+                    ningxue.updateProfilePicture(path)                                
                                 
                                 
             elif "pp @" in msg.text:
                 if msg.toType == 2:
                     cover = msg.text.replace("pp @","")
                     _nametarget = cover.rstrip('  ')
-                    gs = vipro.getGroup(msg.to)
+                    gs = ningxue.getGroup(msg.to)
                     targets = []
                     for g in gs.members:
                         if _nametarget == g.displayName:
                             targets.append(g.mid)
                     if targets == []:
-                        vipro.sendText(msg.to,"Not found")
+                        ningxue.sendText(msg.to,"Not found")
                     else:
                         for target in targets:
                             try:
-                                h = vipro.getContact(target)
-                                vipro.sendImageWithURL(msg.to,"http://dl.profile.line-cdn.net/" + h.pictureStatus)
+                                h = ningxue.getContact(target)
+                                ningxue.sendImageWithURL(msg.to,"http://dl.profile.line-cdn.net/" + h.pictureStatus)
                             except Exception as error:
                                 print error
-                                vipro.sendText(msg.to,"Upload image failed.")
+                                ningxue.sendText(msg.to,"Upload image failed.")
 
             elif "Pp @" in msg.text:
                 if msg.toType == 2:
                     cover = msg.text.replace("Pp @","")
                     _nametarget = cover.rstrip('  ')
-                    gs = vipro.getGroup(msg.to)
+                    gs = ningxue.getGroup(msg.to)
                     targets = []
                     for g in gs.members:
                         if _nametarget == g.displayName:
                             targets.append(g.mid)
                     if targets == []:
-                        vipro.sendText(msg.to,"Not found")
+                        ningxue.sendText(msg.to,"Not found")
                     else:
                         for target in targets:
                             try:
-                                h = vipro.getContact(target)
-                                vipro.sendImageWithURL(msg.to,"http://dl.profile.line-cdn.net/" + h.pictureStatus)
+                                h = ningxue.getContact(target)
+                                ningxue.sendImageWithURL(msg.to,"http://dl.profile.line-cdn.net/" + h.pictureStatus)
                             except Exception as error:
                                 print error
-                                vipro.sendText(msg.to,"Upload image failed.")
+                                ningxue.sendText(msg.to,"Upload image failed.")
 
             elif msg.text.lower() in ["pap owner","pap creator"]:
                                 link = ["http://dl.profile.line-cdn.net/0hFR-rB8h-GX0QCzWZMOZmKixOFxBnJR81aG9eSTUNREhtOVYqJWgFSWYDR05vOwp7K2sCGTELRUVo"]
                                 pilih = random.choice(link)
-                                vipro.sendImageWithURL(msg.to,pilih)
+                                ningxue.sendImageWithURL(msg.to,pilih)
 
  
             elif "Spam: " in msg.text:
                   bctxt = msg.text.replace("Spam: ", "")
                   t = 10
                   while(t):
-                    vipro.sendText(msg.to, (bctxt))
+                    ningxue.sendText(msg.to, (bctxt))
                     t-=1
 
             elif "Scbc " in msg.text:
                   bctxt = msg.text.replace("Scbc ", "")
-                  orang = vipro.getAllContactIds()
+                  orang = ningxue.getAllContactIds()
                   t = 20
                   for manusia in orang:
                     while(t):
-                      vipro.sendText(manusia, (bctxt))
+                      ningxue.sendText(manusia, (bctxt))
                       t-=1
 
             elif "Cbc " in msg.text:
                   broadcasttxt = msg.text.replace("Cbc ", "") 
-                  orang = vipro.getAllContactIds()
+                  orang = ningxue.getAllContactIds()
                   for manusia in orang:
-                    vipro.sendText(manusia, (broadcasttxt))
+                    ningxue.sendText(manusia, (broadcasttxt))
 
  
             elif 'ig ' in msg.text.lower():
@@ -2806,10 +2806,10 @@ def bot(op):
                     link = "Link: " + "https://www.instagram.com/" + instagram
                     detail = "========INSTAGRAM INFO ========\n"
                     details = "\n========INSTAGRAM INFO ========"
-                    vipro.sendText(msg.to, detail + user + user1 + followers + following + post + link + details)
-                    vipro.sendImageWithURL(msg.to, tj)
+                    ningxue.sendText(msg.to, detail + user + user1 + followers + following + post + link + details)
+                    ningxue.sendImageWithURL(msg.to, tj)
                 except Exception as njer:
-                	vipro.sendText(msg.to, str(njer))
+                	ningxue.sendText(msg.to, str(njer))
                 	
                 	
             elif "Checkig " in msg.text:
@@ -2834,10 +2834,10 @@ def bot(op):
                                 r = x.get(page)
                                 url = re.search(r'"video_url": "([^"]+)"', r.text).group(1)
                                 print(url)
-                                vipro.sendVideoWithURL(msg.to,url)
+                                ningxue.sendVideoWithURL(msg.to,url)
                             else:
                                 print (node['display_src'])
-                                vipro.sendImageWithURL(msg.to,node['display_src'])
+                                ningxue.sendImageWithURL(msg.to,node['display_src'])
                         end_cursor = re.search(r'"end_cursor": "([^"]+)"', r.text).group(1)                	
 
 
@@ -2850,9 +2850,9 @@ def bot(op):
                     html = response.read()
                     soup = BeautifulSoup(html, "html.parser")
                     results = soup.find(attrs={'class':'yt-uix-tile-link'})
-                    vipro.sendText(msg.to,'https://www.youtube.com' + results['href'])
+                    ningxue.sendText(msg.to,'https://www.youtube.com' + results['href'])
                 except:
-                    vipro.sendText(msg.to,"Could not find it")
+                    ningxue.sendText(msg.to,"Could not find it")
                     
                     
             elif 'Youtubevideo ' in msg.text:
@@ -2864,9 +2864,9 @@ def bot(op):
                         html = response.read()
                         soup = BeautifulSoup(html, "html.parser")
                         results = soup.find(attrs={'class': 'yt-uix-tile-link'})
-                        vipro.sendVideoWithURL(msg.to,'https://www.youtube.com' + results['href'])
+                        ningxue.sendVideoWithURL(msg.to,'https://www.youtube.com' + results['href'])
                     except:
-                        vipro.sendText(msg.to, "Could not find it")                    
+                        ningxue.sendText(msg.to, "Could not find it")                    
 
  
             elif "Say " in msg.text:
@@ -2874,29 +2874,29 @@ def bot(op):
                 lang = 'id'
                 tts = gTTS(text=say, lang=lang)
                 tts.save("hasil.mp3")
-                vipro.sendAudio(msg.to,"hasil.mp3")
+                ningxue.sendAudio(msg.to,"hasil.mp3")
 
             elif "Say-en " in msg.text:
                 say = msg.text.replace("Say-en ","")
                 lang = 'en'
                 tts = gTTS(text=say, lang=lang)
                 tts.save("hasil.mp3")
-                vipro.sendAudio(msg.to,"hasil.mp3")
+                ningxue.sendAudio(msg.to,"hasil.mp3")
 
             elif "Say-jp " in msg.text:
                 say = msg.text.replace("Say-jp ","")
                 lang = 'ja'
                 tts = gTTS(text=say, lang=lang)
                 tts.save("hasil.mp3")
-                vipro.sendAudio(msg.to,"hasil.mp3")
+                ningxue.sendAudio(msg.to,"hasil.mp3")
 
             elif "Say welcome" in msg.text:
-                gs = vipro.getGroup(msg.to)
+                gs = ningxue.getGroup(msg.to)
                 say = msg.text.replace("Say welcome","Selamat Datang Di "+ gs.name)
                 lang = 'id'
                 tts = gTTS(text=say, lang=lang)
                 tts.save("hasil.mp3")
-                vipro.sendAudio(msg.to,"hasil.mp3")
+                ningxue.sendAudio(msg.to,"hasil.mp3")
                 
             elif "lurk on" == msg.text.lower():
                #if msg.from_ in admin:
@@ -2913,7 +2913,7 @@ def bot(op):
                         wait2['ROM'][msg.to] = {}
                         with open('sider.json', 'w') as fp:
                          json.dump(wait2, fp, sort_keys=True, indent=4)
-                         vipro.sendText(msg.to,"Lurking already on")
+                         ningxue.sendText(msg.to,"Lurking already on")
                 else:
                     try:
                             del wait2['readPoint'][msg.to]
@@ -2927,7 +2927,7 @@ def bot(op):
                     wait2['ROM'][msg.to] = {}
                     with open('sider.json', 'w') as fp:
                      json.dump(wait2, fp, sort_keys=True, indent=4)
-                     vipro.sendText(msg.to, "Set the lastseens' point (｀・ω・´)\n\n" + datetime.now().strftime('%H:%M:%S'))
+                     ningxue.sendText(msg.to, "Set the lastseens' point (｀・ω・´)\n\n" + datetime.now().strftime('%H:%M:%S'))
                      print wait2
 
 
