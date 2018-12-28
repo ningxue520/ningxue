@@ -971,12 +971,12 @@ def bot(op):
                 if wait["wblacklist"] == True:
 		    if msg.contentMetadata["mid"] not in admin:
                         if msg.contentMetadata["mid"] in wait["blacklist"]:
-                            ningxue.sendText(msg.to,"Sudah")
+                            ningxue.sendText(msg.to,"完成")
                             wait["wblacklist"] = False
                         else:
                             wait["blacklist"][msg.contentMetadata["mid"]] = True
                             wait["wblacklist"] = False
-                            ningxue.sendText(msg.to,"Ditambahkan")
+                            ningxue.sendText(msg.to,"失敗")
 		    else:
 			ningxue.sendText(msg.to,"Admin Detected~")
 			
@@ -984,12 +984,12 @@ def bot(op):
                 elif wait["dblacklist"] == True:
                     if msg.contentMetadata["mid"] in wait["blacklist"]:
                         del wait["blacklist"][msg.contentMetadata["mid"]]
-                        ningxue.sendText(msg.to,"Terhapus")
+                        ningxue.sendText(msg.to,"黑名單已清空")
                         wait["dblacklist"] = False
 
                     else:
                         wait["dblacklist"] = False
-                        ningxue.sendText(msg.to,"Tidak Ada Black List")
+                        ningxue.sendText(msg.to,"沒有黑名單")
             
                     
  
@@ -1034,9 +1034,9 @@ def bot(op):
                         ningxue.sendText(msg.to,"[group name]\n" + str(ginfo.name) + "\n[gid]\n" + msg.to + "\n[group creator]\n" + gCreator + "\n[profile status]\nhttp://dl.profile.line.naver.jp/" + ginfo.pictureStatus)
                 else:
                     if wait["lang"] == "JP":
-                        ningxue.sendText(msg.to,"Can not be used outside the group")
+                        ningxue.sendText(msg.to,"不能在群組外使用")
                     else:
-                        ningxue.sendText(msg.to,"Not for use less than group")
+                        ningxue.sendText(msg.to,"沒有於群組使用")
                         
 
  
@@ -1047,7 +1047,7 @@ def bot(op):
                 msg.contentType = 13
                 msg.contentMetadata = {'mid': tjia}
                 ningxue.sendMessage(msg)
-		ningxue.sendText(msg.to,"Itu Majikan Kami (^_^)")
+		ningxue.sendText(msg.to,"他是原創者 (^_^)")
 
  
 
@@ -1057,7 +1057,7 @@ def bot(op):
                 msg.contentType = 13
                 msg.contentMetadata = {'mid': gCreator}
                 ningxue.sendMessage(msg)
-		ningxue.sendText(msg.to,"Itu Yang Buat Grup Ini")
+		ningxue.sendText(msg.to,"他是群主")
  
 
                 
@@ -1120,7 +1120,7 @@ def bot(op):
                     else:
                         for target in targets:
                             try:
-                                ningxue.sendText(msg.to,"Gift Sudah Terkirim!")
+                                ningxue.sendText(msg.to,"送你禮物!")
                                 msg.contentType = 9
                                 msg.contentMetadata= {'PRDTYPE': 'STICKER',
                                                          'STKVER': '1',
@@ -1173,7 +1173,7 @@ def bot(op):
                      targets = []
                      for s in groups.members:
                          if _name in s.displayName:
-                             ningxue.sendText(msg.to, _name + " Berada DiGrup Ini")
+                             ningxue.sendText(msg.to, _name + " 這搞砸了")
                          else:
                              targets.append(invite)
                      if targets == []:
@@ -1236,23 +1236,23 @@ def bot(op):
 		        h = ningxue.getGroup(i).name
 			if h == grp:
 			    wait["BlGroup"][i]=True
-			    ningxue.sendText(msg.to, "Success Ban Group : "+grp)
+			    ningxue.sendText(msg.to, "成功禁止群組 : "+grp)
 			else:
 			    pass
 		else:
-		    ningxue.sendText(msg.to, "Khusus Admin")
+		    ningxue.sendText(msg.to, "只限管理員")
  
             elif msg.text in ["List ban","List ban group"]:
 		if msg.from_ in admin:
                     if wait["BlGroup"] == {}:
-                        ningxue.sendText(msg.to,"Tidak Ada")
+                        ningxue.sendText(msg.to,"ñ")
                     else:
                         mc = ""
                         for gid in wait["BlGroup"]:
                             mc += "-> " +ningxue.getGroup(gid).name + "\n"
                         ningxue.sendText(msg.to,"===[Ban Group]===\n"+mc)
 		else:
-		    ningxue.sendText(msg.to, "Khusus Admin")
+		    ningxue.sendText(msg.to, "只限管理員")
  
 	    elif msg.text in ["Del ban: "]:
 		if msg.from_ in admin:
@@ -1264,7 +1264,7 @@ def bot(op):
 		        else:
 			    pass
 		else:
-		    ningxue.sendText(msg.to, "Khusus Admin")
+		    ningxue.sendText(msg.to, "只限管理員")
  
             elif "Join group: " in msg.text:
 		ng = msg.text.replace("Join group: ","")
@@ -1279,7 +1279,7 @@ def bot(op):
 			    else:
 			        pass
 		    else:
-		        ningxue.sendText(msg.to,"Khusus Admin")
+		        ningxue.sendText(msg.to,"只限管理員")
 		except Exception as e:
 		    ningxue.sendText(msg.to, str(e))
  
@@ -1290,23 +1290,23 @@ def bot(op):
                     for i in gid:
                         h = ningxue.getGroup(i).name
 		        if h == ng:
-			    ningxue.sendText(i,"Bot Di Paksa Keluar Oleh Owner!")
+			    ningxue.sendText(i,"機器人已退出群組!")
 		            ningxue.leaveGroup(i)
 			    ningxue.sendText(msg.to,"Success Left ["+ h +"] group")
 			else:
 			    pass
 		else:
-		    ningxue.sendText(msg.to,"Khusus Admin")
+		    ningxue.sendText(msg.to,"只限管理員")
  
 	    elif "Leave all group" == msg.text:
 		gid = ningxue.getGroupIdsJoined()
                 if msg.from_ in Creator:
 		    for i in gid:
-			ningxue.sendText(i,"Bot Di Paksa Keluar Oleh Owner!")
+			ningxue.sendText(i,"機器人已退出所有群組!")
 		        ningxue.leaveGroup(i)
-		    ningxue.sendText(msg.to,"Success Leave All Group")
+		    ningxue.sendText(msg.to,"機器人已成功退出所有群組!")
 		else:
-		    ningxue.sendText(msg.to,"Khusus Admin")
+		    ningxue.sendText(msg.to,"只限管理員")
 		   
 
             elif "Pict group: " in msg.text:
@@ -1326,59 +1326,59 @@ def bot(op):
                         gInviMids = [contact.mid for contact in X.invitee]
                         ningxue.cancelGroupInvitation(msg.to, gInviMids)
                     else:
-                        ningxue.sendText(msg.to,"Tidak Ada Yang Pending")
+                        ningxue.sendText(msg.to,"沒有待定")
                 else:
-                    ningxue.sendText(msg.to,"Tidak Bisa Digunakan Diluar Group")
+                    ningxue.sendText(msg.to,"不能在群組外使用")
  
             elif msg.text in ["Ourl","Url on"]:
                 if msg.toType == 2:
                     X = ningxue.getGroup(msg.to)
                     X.preventJoinByTicket = False
                     ningxue.updateGroup(X)
-                    ningxue.sendText(msg.to,"Url Sudah Aktif")
+                    ningxue.sendText(msg.to,"網址已開啟")
                 else:
-                    ningxue.sendText(msg.to,"Can not be used outside the group")
+                    ningxue.sendText(msg.to,"不能在群組外使用")
  
             elif msg.text in ["Curl","Url off"]:
                 if msg.toType == 2:
                     X = ningxue.getGroup(msg.to)
                     X.preventJoinByTicket = True
                     ningxue.updateGroup(X)
-                    ningxue.sendText(msg.to,"Url Sudah Di Nonaktifkan")
+                    ningxue.sendText(msg.to,"網址已關閉")
 
                 else:
-                    ningxue.sendText(msg.to,"Can not be used outside the group")
+                    ningxue.sendText(msg.to,"不能在群組外使用")
  
             elif msg.text in ["Join on","Autojoin on"]:
 		if msg.from_ in admin:
                     wait["AutoJoin"] = True
                     wait["AutoJoinCancel"] = False
-                    ningxue.sendText(msg.to,"Auto Join Sudah Aktif")
+                    ningxue.sendText(msg.to,"自動加入群組開啟")
 		else:
-		    ningxue.sendText(msg.to,"Khusus Admin")
+		    ningxue.sendText(msg.to,"只限管理員")
 
             elif msg.text in ["Join off","Autojoin off"]:
 		if msg.from_ in admin:
                     wait["AutoJoin"] = False
-                    ningxue.sendText(msg.to,"Auto Join Sudah Di Nonaktifkan")
+                    ningxue.sendText(msg.to,"自動加入群組關閉")
 		else:
-		    ningxue.sendText(msg.to,"Khusus Admin")
+		    ningxue.sendText(msg.to,"只限管理員")
 		    
 		    
             elif msg.text in ["Joincancel on","Autojoincancel on"]:
 		if msg.from_ in admin:
                     wait["AutoJoinCancel"] = True
                     wait["AutoJoin"] = False
-                    ningxue.sendText(msg.to,"Auto Join Cancel Sudah Aktif")
+                    ningxue.sendText(msg.to,"自動取消群組邀請開啟")
 		else:
-		    ningxue.sendText(msg.to,"Khusus Admin")
+		    ningxue.sendText(msg.to,"只限管理員")
 
             elif msg.text in ["Joincancel off","Autojoincancel off"]:
 		if msg.from_ in admin:
                     wait["AutoJoinCancel"] = False
-                    ningxue.sendText(msg.to,"Auto Join Cancel Sudah Di Nonaktifkan")
+                    ningxue.sendText(msg.to,"自動取消群組邀請關閉")
 		else:
-		    ningxue.sendText(msg.to,"Khusus Admin")		    
+		    ningxue.sendText(msg.to,"只限管理員")		    
 		    
  
             elif msg.text in ["Respon1 on"]:
@@ -1387,16 +1387,16 @@ def bot(op):
                     wait["detectMention2"] = False
                     wait["detectMention3"] = False
                     wait["kickMention"] = False
-                    ningxue.sendText(msg.to,"Auto Respon1 Sudah Aktif")
+                    ningxue.sendText(msg.to,"自動回應1開啟")
 		else:
-		    ningxue.sendText(msg.to,"Khusus Admin")
+		    ningxue.sendText(msg.to,"只限管理員")
 
             elif msg.text in ["Respon1 off"]:
 		if msg.from_ in admin:
                     wait["detectMention"] = False
-                    ningxue.sendText(msg.to,"Auto Respon1 Sudah Off")
+                    ningxue.sendText(msg.to,"自動回應1關閉")
 		else:
-		    ningxue.sendText(msg.to,"Khusus Admin")	
+		    ningxue.sendText(msg.to,"只限管理員")	
 		    
 		    
             elif msg.text in ["Respon2 on"]:
@@ -1405,15 +1405,15 @@ def bot(op):
                     wait["detectMention2"] = True
                     wait["detectMention3"] = False
                     wait["kickMention"] = False
-                    ningxue.sendText(msg.to,"Auto Respon2 Sudah Aktif")
+                    ningxue.sendText(msg.to,"自動回應2開啟")
 		else:
-		    ningxue.sendText(msg.to,"Khusus Admin")
+		    ningxue.sendText(msg.to,"只限管理員")
             elif msg.text in ["Respon2 off"]:
 		if msg.from_ in admin:
                     wait["detectMention2"] = False
-                    ningxue.sendText(msg.to,"Auto Respon2 Sudah Off")
+                    ningxue.sendText(msg.to,"自動回應2關閉")
 		else:
-		    ningxue.sendText(msg.to,"Khusus Admin")	
+		    ningxue.sendText(msg.to,"只限管理員")	
 		    
 
             elif msg.text in ["Respon3 on"]:
@@ -1422,16 +1422,16 @@ def bot(op):
                     wait["detectMention2"] = False
                     wait["detectMention3"] = True
                     wait["kickMention"] = False
-                    ningxue.sendText(msg.to,"Auto Respon3 Sudah Aktif")
+                    ningxue.sendText(msg.to,"自動回應3開啟")
 		else:
-		    ningxue.sendText(msg.to,"Khusus Admin")
+		    ningxue.sendText(msg.to,"只限管理員")
 
             elif msg.text in ["Respon3 off"]:
 		if msg.from_ in admin:
                     wait["detectMention3"] = False
-                    ningxue.sendText(msg.to,"Auto Respon3 Sudah Off")
+                    ningxue.sendText(msg.to,"自動回應3關閉")
 		else:
-		    ningxue.sendText(msg.to,"Khusus Admin")	
+		    ningxue.sendText(msg.to,"只限管理員")	
 		    
  
             elif msg.text in ["Responkick on"]:
@@ -1440,80 +1440,80 @@ def bot(op):
                     wait["detectMention"] = False
                     wait["detectMention2"] = False
                     wait["detectMention3"] = False                    
-                    ningxue.sendText(msg.to,"Auto Respon Kick Sudah Aktif")
+                    ningxue.sendText(msg.to,"標記踢出開啟")
 		else:
-		    ningxue.sendText(msg.to,"Khusus Admin")
+		    ningxue.sendText(msg.to,"只限管理員")
 
             elif msg.text in ["Responkick off"]:
 		if msg.from_ in admin:
                     wait["kickMention"] = False                    
-                    ningxue.sendText(msg.to,"Auto Respon Kick Sudah Off")
+                    ningxue.sendText(msg.to,"標記踢出關閉")
 		else:
-		    ningxue.sendText(msg.to,"Khusus Admin")			  
+		    ningxue.sendText(msg.to,"只限管理員")			  
 		    
  
 	    elif msg.text in ["Autocancel on"]:
 	     if msg.from_ in admin:	        
                 wait["AutoCancel"] = True
-                ningxue.sendText(msg.to,"Auto Cancel Sudah Aktif")
+                ningxue.sendText(msg.to,"自動取消開啟")
 		print wait["AutoCancel"]
 	     else:
-		    ningxue.sendText(msg.to,"Khusus Admin")		
+		    ningxue.sendText(msg.to,"只限管理員")		
 
 	    elif msg.text in ["Autocancel off"]:
 	     if msg.from_ in admin:	        
                 wait["AutoCancel"] = False
-                ningxue.sendText(msg.to,"Auto Cancel Sudah Di Nonaktifkan")
+                ningxue.sendText(msg.to,"自動取消關閉")
 		print wait["AutoCancel"]
 	     else:
-		    ningxue.sendText(msg.to,"Khusus Admin")	
+		    ningxue.sendText(msg.to,"只限管理員")	
 		    
 
 	    elif msg.text in ["Invitepro on"]:
 	     if msg.from_ in admin:	        
                 wait["inviteprotect"] = True
-                ningxue.sendText(msg.to,"Invite Protect Sudah Aktif")
+                ningxue.sendText(msg.to,"邀請保護開啟")
 		print wait["inviteprotect"]
 	     else:
-		    ningxue.sendText(msg.to,"Khusus Admin")		
+		    ningxue.sendText(msg.to,"只限管理員")		
 
 	    elif msg.text in ["Invitepro off"]:
 	     if msg.from_ in admin:	        
                 wait["inviteprotect"] = False
-                ningxue.sendText(msg.to,"Invite Protect Sudah Di Nonaktifkan")
+                ningxue.sendText(msg.to,"邀請保護關閉")
 		print wait["inviteprotect"]
 	     else:
-		    ningxue.sendText(msg.to,"Khusus Admin")		    
+		    ningxue.sendText(msg.to,"只限管理員")		    
 
 	    elif "Qr on" in msg.text:
 	     if msg.from_ in admin:	        
 	        wait["Qr"] = True
-	    	ningxue.sendText(msg.to,"QR Protect Sudah Aktif")
+	    	ningxue.sendText(msg.to,"QR邀請保護開啟")
 	     else:
-		    ningxue.sendText(msg.to,"Khusus Admin")	    	
+		    ningxue.sendText(msg.to,"只限管理員")	    	
 
 	    elif "Qr off" in msg.text:
 	     if msg.from_ in admin:	        
 	    	wait["Qr"] = False
-	    	ningxue.sendText(msg.to,"Qr Protect Sudah Di Nonaktifkan")
+	    	ningxue.sendText(msg.to,"Qr邀請保護關閉")
 	     else:
-		    ningxue.sendText(msg.to,"Khusus Admin")	    	
+		    ningxue.sendText(msg.to,"只限管理員")	    	
 
                         
 
 	    elif "Autokick on" in msg.text:
 	     if msg.from_ in admin:	 	        
 		     wait["AutoKick"] = True
-		     ningxue.sendText(msg.to,"Auto Kick Sudah Aktif")
+		     ningxue.sendText(msg.to,"踢人保護開啟")
 	     else:
-	        ningxue.sendText(msg.to,"Khusus Admin")	     
+	        ningxue.sendText(msg.to,"只限管理員")	     
 
 	    elif "Autokick off" in msg.text:
 	     if msg.from_ in admin:	 	        
 		     wait["AutoKick"] = False
-		     ningxue.sendText(msg.to,"Auto Kick Sudah Di Nonaktifkan")
+		     ningxue.sendText(msg.to,"踢人保護關閉")
 	     else:
-	        ningxue.sendText(msg.to,"Khusus Admin")	     
+	        ningxue.sendText(msg.to,"只限管理員")	     
 
 
             elif msg.text in ["Allprotect on"]:
@@ -1522,9 +1522,9 @@ def bot(op):
                     wait["inviteprotect"] = True                   
                     wait["AutoKick"] = True
                     wait["Qr"] = True
-                    ningxue.sendText(msg.to,"All Protect Sudah Aktif Semua")
+                    ningxue.sendText(msg.to,"防翻設定全開")
 		else:
-		    ningxue.sendText(msg.to,"Khusus Admin")
+		    ningxue.sendText(msg.to,"只限管理員")
 
             elif msg.text in ["Allprotect off"]:
 		if msg.from_ in admin:
@@ -1532,46 +1532,46 @@ def bot(op):
                     wait["inviteprotect"] = False                    
                     wait["AutoKick"] = False
                     wait["Qr"] = False
-                    ningxue.sendText(msg.to,"All Protect Sudah Di Nonaktifkan Semua")
+                    ningxue.sendText(msg.to,"防翻設定全關")
 		else:
-		    ningxue.sendText(msg.to,"Khusus Admin")
+		    ningxue.sendText(msg.to,"只限管理員")
 
 
             elif msg.text in ["K on","Contact on"]:
                 wait["Contact"] = True
-                ningxue.sendText(msg.to,"Contact Sudah Aktif")
+                ningxue.sendText(msg.to,"聯絡人開啓")
 
             elif msg.text in ["K off","Contact off"]:
                 wait["Contact"] = False
-                ningxue.sendText(msg.to,"Contact Sudah Di Nonaktifkan")
+                ningxue.sendText(msg.to,"聯絡人關閉")
                 
 
             elif msg.text in ["Alwaysread on"]:
                 wait["alwaysRead"] = True
-                ningxue.sendText(msg.to,"Always Read Sudah Aktif")
+                ningxue.sendText(msg.to,"自動已讀開啟")
 
             elif msg.text in ["Alwaysread off"]:
                 wait["alwaysRead"] = False
-                ningxue.sendText(msg.to,"Always Read Sudah Di Nonaktifkan")                
+                ningxue.sendText(msg.to,"自動已讀關閉")                
 
 
             elif msg.text in ["Notif on"]:
                 if wait["Sambutan"] == True:
                     if wait["lang"] == "JP":
-                        ningxue.sendText(msg.to,"Sambutan Di Aktifkanヾ(*´∀｀*)ﾉ")
+                        ningxue.sendText(msg.to,"歡迎啟用ヾ(*´∀｀*)ﾉ")
                 else:
                     wait["Sambutan"] = True
                     if wait["lang"] == "JP":
-                        ningxue.sendText(msg.to,"Sudah Onヽ(´▽｀)/")
+                        ningxue.sendText(msg.to,"已經被開啟ヽ(´▽｀)/")
 
             elif msg.text in ["Notif off"]:
                 if wait["Sambutan"] == False:
                     if wait["lang"] == "JP":
-                        ningxue.sendText(msg.to,"Sambutan Di Nonaktifkan(　＾∇＾)")
+                        ningxue.sendText(msg.to,"歡迎禁用(　＾∇＾)")
                 else:
                     wait["Sambutan"] = False
                     if wait["lang"] == "JP":
-                        ningxue.sendText(msg.to,"Sudah Off(p′︵‵。)")
+                        ningxue.sendText(msg.to,"已經被禁用(p′︵‵。)")
                         
                         
             elif "Sider on" in msg.text:
@@ -1585,15 +1585,15 @@ def bot(op):
                 cctv['sidermem'][msg.to] = ""
                 cctv['cyduk'][msg.to]=True
                 wait["Sider"] = True
-                ningxue.sendText(msg.to,"Siap On Cek Sider")
+                ningxue.sendText(msg.to,"準備頁面審查")
                 
             elif "Sider off" in msg.text:
                 if msg.to in cctv['point']:
                     cctv['cyduk'][msg.to]=False
                     wait["Sider"] = False
-                    ningxue.sendText(msg.to, "Cek Sider Off")
+                    ningxue.sendText(msg.to, "取消頁面審查")
                 else:
-                    ningxue.sendText(msg.to, "Heh Belom Di Set")                         
+                    ningxue.sendText(msg.to, "error")                         
 
 
             elif msg.text in ["Status"]:
@@ -2279,54 +2279,54 @@ def bot(op):
 		if msg.from_ in admin:	 	        
 		    jml = msg.text.replace("Set member: ","")
 		    wait["Members"] = int(jml)
-		    ningxue.sendText(msg.to, "Jumlah minimal member telah di set : "+jml)
+		    ningxue.sendText(msg.to, "已設定最低成員數 : "+jml)
 
 	    elif "Add all" in msg.text:
 		    thisgroup = ningxue.getGroups([msg.to])
 		    Mids = [contact.mid for contact in thisgroup[0].members]
 		    mi_d = Mids[:33]
 		    ningxue.findAndAddContactsByMids(mi_d)
-		    ningxue.sendText(msg.to,"Success Add all")
+		    ningxue.sendText(msg.to,"成功邀請所有成員")
 
 
             elif msg.text in ["Invite"]:
                 wait["invite"] = True
-                ningxue.sendText(msg.to,"Send Contact")
+                ningxue.sendText(msg.to,"請給友資")
                 
                 
 
             elif msg.text in ["Auto like"]:
                 wait["likeOn"] = True
-                ningxue.sendText(msg.to,"Shere Post Kamu Yang Mau Di Like!")                
+                ningxue.sendText(msg.to,"自動貼文讚好")                
 
 
             elif msg.text in ["Steal contact"]:
                 wait["steal"] = True
-                ningxue.sendText(msg.to,"Send Contact")
+                ningxue.sendText(msg.to,"請給友資")
                 
 
             elif msg.text in ["Giftbycontact"]:
                 wait["gift"] = True
-                ningxue.sendText(msg.to,"Send Contact") 
+                ningxue.sendText(msg.to,"請給友資") 
                 
             elif msg.text in ["Copycontact"]:
                 wait["copy"] = True
-                ningxue.sendText(msg.to,"Send Contact") 
+                ningxue.sendText(msg.to,"請給友資") 
                 
             elif msg.text in ["Sticker on"]:
                 wait["sticker"] = True
-                ningxue.sendText(msg.to,"Sticker ID Detect Already On.")  
+                ningxue.sendText(msg.to,"貼紙ID檢測已經開啟")  
                 
             elif msg.text in ["Bot off"]:
                 wait["Bot"] = False
-                ningxue.sendText(msg.to,"Bot Sudah Di Nonaktifkan.")  
+                ningxue.sendText(msg.to,"機器人已被禁用")  
 
 	    elif "Recover" in msg.text:
 		thisgroup = ningxue.getGroups([msg.to])
 		Mids = [contact.mid for contact in thisgroup[0].members]
 		mi_d = Mids[:33]
 		ningxue.createGroup("Recover", mi_d)
-		ningxue.sendText(msg.to,"Success recover")
+		ningxue.sendText(msg.to,"成功恢復")
 
 
 
@@ -2336,14 +2336,14 @@ def bot(op):
                     X.name = msg.text.replace("Gn: ","")
                     ningxue.updateGroup(X)
                 else:
-                    ningxue.sendText(msg.to,"It can't be used besides the group.")
+                    ningxue.sendText(msg.to,"除了群組之外不能使用")
 
             elif "Kick: " in msg.text:
                 midd = msg.text.replace("Kick: ","")
 		if midd not in admin:
 		    ningxue.kickoutFromGroup(msg.to,[midd])
 		else:
-		    ningxue.sendText(msg.to,"Admin Detected")
+		    ningxue.sendText(msg.to,"管理員偵測")
 
             elif "Invite: " in msg.text:
                 midd = msg.text.replace("Invite: ","")
@@ -2356,7 +2356,7 @@ def bot(op):
 
             elif msg.text in ["Welcome","welcome","Welkam","welkam","Wc","wc"]:
                 gs = ningxue.getGroup(msg.to)
-                ningxue.sendText(msg.to,"Selamat Datang Di "+ gs.name)
+                ningxue.sendText(msg.to,"歡迎加入 "+ gs.name)
                 msg.contentType = 7
                 msg.contentMetadata={'STKID': '247',
                                     'STKPKGID': '3',
@@ -2372,13 +2372,13 @@ def bot(op):
 			ningxue.sendText(i,"=======[BROADCAST]=======\n\n"+bc+"\n\nContact Me : line.me/ti/p/~nad_nad.")
 		    ningxue.sendText(msg.to,"Success BC BosQ")
 		else:
-		    ningxue.sendText(msg.to,"Khusus Admin")
+		    ningxue.sendText(msg.to,"只限管理員")
 
             elif msg.text in ["Cancel"]:
                 gid = ningxue.getGroupIdsInvited()
                 for i in gid:
                     ningxue.rejectGroupInvitation(i)
-                ningxue.sendText(msg.to,"All invitations have been refused")
+                ningxue.sendText(msg.to,"所有邀請都被拒絕了")
 
             elif msg.text in ["Gurl"]:
                 if msg.toType == 2:
@@ -2390,9 +2390,9 @@ def bot(op):
                     ningxue.sendText(msg.to,"line://ti/g/" + gurl)
                 else:
                     if wait["lang"] == "JP":
-                        ningxue.sendText(msg.to,"Can't be used outside the group")
+                        ningxue.sendText(msg.to,"不能在群組外使用")
                     else:
-                        ningxue.sendText(msg.to,"Not for use less than group")
+                        ningxue.sendText(msg.to,"沒有在群組内使用")
 
 
             elif msg.text in ["timeline"]:
@@ -2417,24 +2417,24 @@ def bot(op):
                 start = time.time()
                 print("Speed")                
                 elapsed_time = time.time() - start
-		ningxue.sendText(msg.to, "Progress...")
+		ningxue.sendText(msg.to, "運行中...")
                 ningxue.sendText(msg.to, "%sseconds" % (elapsed_time))
                 
             elif msg.text in ["Speed test"]:
                 start = time.time()
-                ningxue.sendText(msg.to, "Progress...")
+                ningxue.sendText(msg.to, "運行中...")
                 elapsed_time = time.time() - start
                 ningxue.sendText(msg.to, "%sseconds" % (elapsed_time))                
  
             elif msg.text in ["Ban"]:
                 if msg.from_ in admin:
                     wait["wblacklist"] = True
-                    ningxue.sendText(msg.to,"send contact")
+                    ningxue.sendText(msg.to,"請給友資")
 
             elif msg.text in ["Unban"]:
                 if msg.from_ in admin:
                     wait["dblacklist"] = True
-                    ningxue.sendText(msg.to,"send contact")
+                    ningxue.sendText(msg.to,"請給友資")
  
             elif "Ban @" in msg.text:
                 if msg.from_ in admin:
@@ -2460,12 +2460,12 @@ def bot(op):
                                 except:
                                     ningxue.sendText(msg.to,"Error")
 			    else:
-				ningxue.sendText(msg.to,"Admin Detected~")
+				ningxue.sendText(msg.to,"管理員偵測")
  
             elif msg.text in ["Banlist","Ban list"]:
               if msg.from_ in admin:
                 if wait["blacklist"] == {}:
-                    ningxue.sendText(msg.to,"Tidak Ada")
+                    ningxue.sendText(msg.to,"ñ")
                 else:
                     mc = ""
                     for mi_d in wait["blacklist"]:
@@ -2492,15 +2492,15 @@ def bot(op):
                                 del wait["blacklist"][target]
                                 f=codecs.open('st2__b.json','w','utf-8')
                                 json.dump(wait["blacklist"], f, sort_keys=True, indent=4,ensure_ascii=False)
-                                ningxue.sendText(msg.to,"Succes BosQ")
+                                ningxue.sendText(msg.to,"成功解除")
                             except:
-                                ningxue.sendText(msg.to,"Succes BosQ")
+                                ningxue.sendText(msg.to,"成功解除")
                                 
                                 
             elif msg.text.lower() == 'clear ban':
                 if msg.from_ in admin:
                     wait["blacklist"] = {}
-                    ningxue.sendText(msg.to,"ヽ( ^ω^)ﾉ└ ❉Unbanned All Success❉ ┐") 
+                    ningxue.sendText(msg.to,"ヽ( ^ω^)ﾉ└ ❉成功解除所有黑名單❉ ┐") 
 
  
             elif msg.text in ["Kill ban"]:
@@ -2512,13 +2512,13 @@ def bot(op):
                         for tag in wait["blacklist"]:
                             matched_list+=filter(lambda str: str == tag, gMembMids)
                         if matched_list == []:
-                            ningxue.sendText(msg.to,"There was no blacklist user")
+                            ningxue.sendText(msg.to,"沒有黑名單用戶")
                             return
                         for jj in matched_list:
                             ningxue.kickoutFromGroup(msg.to,[jj])
-                        ningxue.sendText(msg.to,"Blacklist emang pantas tuk di usir")
+                        ningxue.sendText(msg.to,"黑名單用戶將被踢除")
 		else:
-		    ningxue.sendText(msg.to, "Khusus creator")
+		    ningxue.sendText(msg.to, "只限創作者")
  
             elif msg.text in ["Kill"]:
                     if msg.toType == 2:
@@ -2529,7 +2529,7 @@ def bot(op):
                         for tag in wait["blacklist"]:
                             matched_list+=filter(lambda str: str == tag, gMembMids)
                         if matched_list == []:
-                            ningxue.sendText(msg.to,"Fuck You")
+                            ningxue.sendText(msg.to,"幹你娘")
                             return
                         for jj in matched_list:
                             try:
@@ -2545,7 +2545,7 @@ def bot(op):
                         print "Kick all member"
                         _name = msg.text.replace("Kickall","")
                         gs = ningxue.getGroup(msg.to)
-                        ningxue.sendText(msg.to,"Dadaaah~")
+                        ningxue.sendText(msg.to,"凝雪幻滅開始~~~~")
                         targets = []
                         for g in gs.members:
                             if _name in g.displayName:
@@ -2565,7 +2565,7 @@ def bot(op):
 
 	    elif msg.text in ["Bot restart","Reboot"]:
 		if msg.from_ in Creator:
-		    ningxue.sendText(msg.to, "Bot Has Been Restarted...")
+		    ningxue.sendText(msg.to, "機器人已重啟...")
 		    restart_program()
 		    print "@Restart"
 		else:
@@ -2602,7 +2602,7 @@ def bot(op):
                        for target in targets:
                             try:
                                ningxue.CloneContactProfile(target)
-                               ningxue.sendText(msg.to, "Copied (^_^)")
+                               ningxue.sendText(msg.to, "已複製 (^_^)")
                             except Exception as e:
                                 print e
 
@@ -2610,7 +2610,7 @@ def bot(op):
                 try:
                     ningxue.updateDisplayPicture(backup1.pictureStatus)
                     ningxue.updateProfile(backup1)
-                    ningxue.sendText(msg.to, "Done (^_^)")
+                    ningxue.sendText(msg.to, "完成 (^_^)")
                 except Exception as e:
                     ningxue.sendText(msg.to, str(e))
 
@@ -2624,9 +2624,9 @@ def bot(op):
 					for song in data:
 						abc = song[3].replace('https://','http://')
 						ningxue.sendText(msg.to, "Title : " + song[0] + "\nLength : " + song[1] + "\nLink download : " + song[4])
-						ningxue.sendText(msg.to, "Lagu " + song[0] + "\nSedang Di Prosses... Tunggu Sebentar ^_^ ")
+						ningxue.sendText(msg.to, "Lagu " + song[0] + "\n運行中... 請稍侯 ^_^ ")
 						ningxue.sendAudioWithURL(msg.to,abc)
-						ningxue.sendText(msg.to, "Selamat Mendengarkan Lagu " + song[0])
+						ningxue.sendText(msg.to, "請聆聽歌曲 " + song[0])
 	
             elif 'lirik ' in msg.text.lower():
                 try:
@@ -2656,10 +2656,10 @@ def bot(op):
 						hasil += song[0]
 						hasil += ')\n\n'
 						hasil += song[5]
-						ningxue.sendText(msg.to, "Lagu " + song[0] + "\nSedang Di Prosses... Tunggu Sebentar ^_^ ")
+						ningxue.sendText(msg.to, "Lagu " + song[0] + "\n運行中... 請稍侯 ^_^ ")
 						ningxue.sendAudioWithURL(msg.to,abc)
 						ningxue.sendText(msg.to, "Title : " + song[0] + "\nLength : " + song[1] + "\nLink download : " + song[4] +"\n\n" + hasil)
-						ningxue.sendText(msg.to, "Selamat Mendengarkan Lagu " + song[0])
+						ningxue.sendText(msg.to, "請聆聽歌曲 " + song[0])
              
             
             
@@ -2999,7 +2999,7 @@ def bot(op):
                 tob = msg.text.lower().replace("playstore ","")
                 ningxue.sendText(msg.to,"Sedang Mencari...")
                 ningxue.sendText(msg.to,"Title : "+tob+"\nSource : Google Play\nLink : https://play.google.com/store/search?q=" + tob)
-                ningxue.sendText(msg.to,"Tuh Linknya Kak (^_^)")
+                ningxue.sendText(msg.to,"鏈接成功 (^_^)")
 
 
             elif "Mid @" in msg.text:
@@ -3347,7 +3347,7 @@ def bot(op):
                 timeHours = datetime.strftime(timeNow,"(%H:%M)")
                 day = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday","Friday", "Saturday"]
                 hari = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"]
-                bulan = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"]
+                bulan = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
                 inihari = datetime.today()
                 hr = inihari.strftime('%A')
                 bln = inihari.strftime('%m')
@@ -3462,9 +3462,9 @@ def bot(op):
                         else:
                             break
                     if gid is not None:
-                        ningxue.sendText(msg.to,"Berhasil tolak undangan dari grup " + gid.name)
+                        ningxue.sendText(msg.to,"成功拒絕了群組邀請 " + gid.name)
                     else:
-                        ningxue.sendText(msg.to,"Grup tidak ditemukan")
+                        ningxue.sendText(msg.to,"未找到群組")
             
             elif msg.text in ["Acc invite"]:
                 if msg.from_ in admin:
@@ -3478,9 +3478,9 @@ def bot(op):
                         else:
                             break
                     if gid is not None:
-                        ningxue.sendText(msg.to,"Berhasil terima semua undangan dari grup :\n" + _list)
+                        ningxue.sendText(msg.to,"成功收到了群組的所有邀請 :\n" + _list)
                     else:
-                        ningxue.sendText(msg.to,"Tidak ada grup yang tertunda saat ini")  
+                        ningxue.sendText(msg.to,"目前沒有待處理的群組")  
 
 
             elif "Gif gore" in msg.text:
@@ -3499,7 +3499,7 @@ def bot(op):
                 for target in targets:
                     try:
                         mimic["target"][target] = True
-                        ningxue.sendText(msg.to,"Target ditambahkan!")
+                        ningxue.sendText(msg.to,"目標已添加!")
                         break
                     except:
                         ningxue.sendText(msg.to,"Fail !")
@@ -3514,7 +3514,7 @@ def bot(op):
                 for target in targets:
                     try:
                         del mimic["target"][target]
-                        ningxue.sendText(msg.to,"Target dihapuskan!")
+                        ningxue.sendText(msg.to,"目標已刪除!")
                         break
                     except:
                         ningxue.sendText(msg.to,"Fail !")
