@@ -546,7 +546,7 @@ def bot(op):
 
         if op.type == 5:
            if wait["autoAdd"] == True:
-              vipro.findAndAddContactsByMid(op.param1)
+              ningxue.findAndAddContactsByMid(op.param1)
               if(wait["message"]in[""," ","\n",None]):
                 pass
               else:
@@ -668,8 +668,8 @@ def bot(op):
                     pass
                 elif wait["inviteprotect"] == True:
                     wait ["blacklist"][op.param2] = True
-                    vipro.cancelGroupInvitation(op.param1,[op.param3])
-                    vipro.kickoutFromGroup(op.param1,[op.param2])
+                    ningxue.cancelGroupInvitation(op.param1,[op.param3])
+                    ningxue.kickoutFromGroup(op.param1,[op.param2])
                     if op.param2 not in Creator:
                      if op.param2 not in admin:
                       if op.param2 not in Bots:
@@ -823,7 +823,7 @@ def bot(op):
           if wait["Sambutan"] == True:
             if op.param2 in Creator:
                 return
-            ningxue.sendText(op.param1,vipro.getContact(op.param2).displayName +  "\n已退出群組")
+            ningxue.sendText(op.param1,ningxue.getContact(op.param2).displayName +  "\n已退出群組")
             d = Message(to=op.param1, from_=None, text=None, contentType=7)
             d.contentMetadata={
                                     "STKID": "13269542",
@@ -932,7 +932,7 @@ def bot(op):
                               
             if msg.text in ["Bot on"]:
                 wait["Bot"] = True
-                ningxue.sendText(msg.to,"機器人已開啓")  
+                ningxue.sendText(msg.to,"機器人已開啟")  
 
         if op.type == 25:
           if wait["Bot"] == True:    
@@ -946,24 +946,24 @@ def bot(op):
                 stk_ver = msg.contentMetadata['STKVER']
                 pkg_id = msg.contentMetadata['STKPKGID']
                 filler = "『 Sticker Check 』\nSTKID : %s\nSTKPKGID : %s\nSTKVER : %s\n『 Link 』\nline://shop/detail/%s" % (stk_id,pkg_id,stk_ver,pkg_id)
-                vipro.sendText(msg.to, filler)
+                ningxue.sendText(msg.to, filler)
                 wait["sticker"] = False
             else:
                 pass              
 
             if wait["alwaysRead"] == True:
                 if msg.toType == 0:
-                    vipro.sendChatChecked(msg.from_,msg.id)
+                    ningxue.sendChatChecked(msg.from_,msg.id)
                 else:
-                    vipro.sendChatChecked(msg.to,msg.id)
+                    ningxue.sendChatChecked(msg.to,msg.id)
                     
                     
             if msg.contentType == 16:
                 if wait['likeOn'] == True:
                      url = msg.contentMetadata["postEndUrl"]
-                     vipro.like(url[25:58], url[66:], likeType=1005)
-                     vipro.comment(url[25:58], url[66:], wait["comment"])
-                     vipro.sendText(msg.to,"Like Success")                     
+                     ningxue.like(url[25:58], url[66:], likeType=1005)
+                     ningxue.comment(url[25:58], url[66:], wait["comment"])
+                     ningxue.sendText(msg.to,"Like Success")                     
                      wait['likeOn'] = False
 
 
@@ -971,51 +971,51 @@ def bot(op):
                 if wait["wblacklist"] == True:
 		    if msg.contentMetadata["mid"] not in admin:
                         if msg.contentMetadata["mid"] in wait["blacklist"]:
-                            vipro.sendText(msg.to,"Sudah")
+                            ningxue.sendText(msg.to,"Sudah")
                             wait["wblacklist"] = False
                         else:
                             wait["blacklist"][msg.contentMetadata["mid"]] = True
                             wait["wblacklist"] = False
-                            vipro.sendText(msg.to,"Ditambahkan")
+                            ningxue.sendText(msg.to,"Ditambahkan")
 		    else:
-			vipro.sendText(msg.to,"Admin Detected~")
+			ningxue.sendText(msg.to,"Admin Detected~")
 			
 
                 elif wait["dblacklist"] == True:
                     if msg.contentMetadata["mid"] in wait["blacklist"]:
                         del wait["blacklist"][msg.contentMetadata["mid"]]
-                        vipro.sendText(msg.to,"Terhapus")
+                        ningxue.sendText(msg.to,"Terhapus")
                         wait["dblacklist"] = False
 
                     else:
                         wait["dblacklist"] = False
-                        vipro.sendText(msg.to,"Tidak Ada Black List")
+                        ningxue.sendText(msg.to,"Tidak Ada Black List")
             
                     
  
                 elif wait["Contact"] == True:
                      msg.contentType = 0
-                     vipro.sendText(msg.to,msg.contentMetadata["mid"])
+                     ningxue.sendText(msg.to,msg.contentMetadata["mid"])
                      if 'displayName' in msg.contentMetadata:
-                         contact = vipro.getContact(msg.contentMetadata["mid"])
+                         contact = ningxue.getContact(msg.contentMetadata["mid"])
                          try:
-                             cu = vipro.channel.getCover(msg.contentMetadata["mid"])
+                             cu = ningxue.channel.getCover(msg.contentMetadata["mid"])
                          except:
                              cu = ""
-                         vipro.sendText(msg.to,"Nama:\n" + msg.contentMetadata["displayName"] + "\n\nMid:\n" + msg.contentMetadata["mid"] + "\n\nStatus:\n" + contact.statusMessage + "\n\nPhoto Profile:\nhttp://dl.profile.line-cdn.net/" + contact.pictureStatus + "\n\nPhoto Cover:\n" + str(cu))
+                         ningxue.sendText(msg.to,"Nama:\n" + msg.contentMetadata["displayName"] + "\n\nMid:\n" + msg.contentMetadata["mid"] + "\n\nStatus:\n" + contact.statusMessage + "\n\nPhoto Profile:\nhttp://dl.profile.line-cdn.net/" + contact.pictureStatus + "\n\nPhoto Cover:\n" + str(cu))
                      else:
-                         contact = vipro.getContact(msg.contentMetadata["mid"])
+                         contact = ningxue.getContact(msg.contentMetadata["mid"])
                          try:
-                             cu = vipro.channel.getCover(msg.contentMetadata["mid"])
+                             cu = ningxue.channel.getCover(msg.contentMetadata["mid"])
                          except:
                              cu = ""
-                         vipro.sendText(msg.to,"Nama:\n" + msg.contentMetadata["displayName"] + "\n\nMid:\n" + msg.contentMetadata["mid"] + "\n\nStatus:\n" + contact.statusMessage + "\n\nPhoto Profile:\nhttp://dl.profile.line-cdn.net/" + contact.pictureStatus + "\n\nPhoto Cover:\n" + str(cu))
+                         ningxue.sendText(msg.to,"Nama:\n" + msg.contentMetadata["displayName"] + "\n\nMid:\n" + msg.contentMetadata["mid"] + "\n\nStatus:\n" + contact.statusMessage + "\n\nPhoto Profile:\nhttp://dl.profile.line-cdn.net/" + contact.pictureStatus + "\n\nPhoto Cover:\n" + str(cu))
 
 
  
             elif msg.text == "Ginfo":
                 if msg.toType == 2:
-                    ginfo = vipro.getGroup(msg.to)
+                    ginfo = ningxue.getGroup(msg.to)
                     try:
                         gCreator = ginfo.creator.displayName
                     except:
@@ -1029,14 +1029,14 @@ def bot(op):
                             u = "close"
                         else:
                             u = "open"
-                        vipro.sendText(msg.to,"[Group name]\n" + str(ginfo.name) + "\n\n[Gid]\n" + msg.to + "\n\n[Group creator]\n" + gCreator + "\n\n[Profile status]\nhttp://dl.profile.line.naver.jp/" + ginfo.pictureStatus + "\n\nMembers:" + str(len(ginfo.members)) + "members\nPending:" + sinvitee + "people\nURL:" + u + "it is inside")
+                        ningxue.sendText(msg.to,"[Group name]\n" + str(ginfo.name) + "\n\n[Gid]\n" + msg.to + "\n\n[Group creator]\n" + gCreator + "\n\n[Profile status]\nhttp://dl.profile.line.naver.jp/" + ginfo.pictureStatus + "\n\nMembers:" + str(len(ginfo.members)) + "members\nPending:" + sinvitee + "people\nURL:" + u + "it is inside")
                     else:
-                        vipro.sendText(msg.to,"[group name]\n" + str(ginfo.name) + "\n[gid]\n" + msg.to + "\n[group creator]\n" + gCreator + "\n[profile status]\nhttp://dl.profile.line.naver.jp/" + ginfo.pictureStatus)
+                        ningxue.sendText(msg.to,"[group name]\n" + str(ginfo.name) + "\n[gid]\n" + msg.to + "\n[group creator]\n" + gCreator + "\n[profile status]\nhttp://dl.profile.line.naver.jp/" + ginfo.pictureStatus)
                 else:
                     if wait["lang"] == "JP":
-                        vipro.sendText(msg.to,"Can not be used outside the group")
+                        ningxue.sendText(msg.to,"Can not be used outside the group")
                     else:
-                        vipro.sendText(msg.to,"Not for use less than group")
+                        ningxue.sendText(msg.to,"Not for use less than group")
                         
 
  
@@ -1046,18 +1046,18 @@ def bot(op):
             elif msg.text in ["Creator","Owner"]:
                 msg.contentType = 13
                 msg.contentMetadata = {'mid': tjia}
-                vipro.sendMessage(msg)
-		vipro.sendText(msg.to,"Itu Majikan Kami (^_^)")
+                ningxue.sendMessage(msg)
+		ningxue.sendText(msg.to,"Itu Majikan Kami (^_^)")
 
  
 
 	    elif msg.text in ["Group creator","Gcreator","gcreator"]:
-		ginfo = vipro.getGroup(msg.to)
+		ginfo = ningxue.getGroup(msg.to)
 		gCreator = ginfo.creator.mid
                 msg.contentType = 13
                 msg.contentMetadata = {'mid': gCreator}
-                vipro.sendMessage(msg)
-		vipro.sendText(msg.to,"Itu Yang Buat Grup Ini")
+                ningxue.sendMessage(msg)
+		ningxue.sendText(msg.to,"Itu Yang Buat Grup Ini")
  
 
                 
@@ -1065,14 +1065,14 @@ def bot(op):
                 if wait["Timeline"] == True:
                     msg.contentType = 0
                     msg.text = "post URL\n" + msg.contentMetadata["postEndUrl"]
-                    vipro.sendText(msg.to,msg.text)
+                    ningxue.sendText(msg.to,msg.text)
 
             
             if msg.contentType == 13:
                 if wait["steal"] == True:
                     _name = msg.contentMetadata["displayName"]
                     copy = msg.contentMetadata["mid"]
-                    groups = vipro.getGroup(msg.to)
+                    groups = ningxue.getGroup(msg.to)
                     pending = groups.invitee
                     targets = []
                     for s in groups.members:
@@ -1086,16 +1086,16 @@ def bot(op):
                     else:
                         for target in targets:
                             try:
-                                vipro.findAndAddContactsByMid(target)
-                                contact = vipro.getContact(target)
-                                cu = vipro.channel.getCover(target)
+                                ningxue.findAndAddContactsByMid(target)
+                                contact = ningxue.getContact(target)
+                                cu = ningxue.channel.getCover(target)
                                 path = str(cu)
                                 image = "http://dl.profile.line-cdn.net/" + contact.pictureStatus
-                                vipro.sendText(msg.to,"Nama :\n" + contact.displayName + "\n\nMid :\n" + msg.contentMetadata["mid"] + "\n\nBio :\n" + contact.statusMessage)
-                                vipro.sendText(msg.to,"Profile Picture " + contact.displayName)
-                                vipro.sendImageWithURL(msg.to,image)
-                                vipro.sendText(msg.to,"Cover " + contact.displayName)
-                                vipro.sendImageWithURL(msg.to,path)
+                                ningxue.sendText(msg.to,"Nama :\n" + contact.displayName + "\n\nMid :\n" + msg.contentMetadata["mid"] + "\n\nBio :\n" + contact.statusMessage)
+                                ningxue.sendText(msg.to,"Profile Picture " + contact.displayName)
+                                ningxue.sendImageWithURL(msg.to,image)
+                                ningxue.sendText(msg.to,"Cover " + contact.displayName)
+                                ningxue.sendImageWithURL(msg.to,path)
                                 wait["steal"] = False
                                 break
                             except:
@@ -1106,7 +1106,7 @@ def bot(op):
                 if wait["gift"] == True:
                     _name = msg.contentMetadata["displayName"]
                     copy = msg.contentMetadata["mid"]
-                    groups = vipro.getGroup(msg.to)
+                    groups = ningxue.getGroup(msg.to)
                     pending = groups.invitee
                     targets = []
                     for s in groups.members:
@@ -1120,7 +1120,7 @@ def bot(op):
                     else:
                         for target in targets:
                             try:
-                                vipro.sendText(msg.to,"Gift Sudah Terkirim!")
+                                ningxue.sendText(msg.to,"Gift Sudah Terkirim!")
                                 msg.contentType = 9
                                 msg.contentMetadata= {'PRDTYPE': 'STICKER',
                                                          'STKVER': '1',
@@ -1128,7 +1128,7 @@ def bot(op):
                                                          'STKPKGID': '1296261'}
                                 msg.to = target
                                 msg.text = None
-                                vipro.sendMessage(msg)
+                                ningxue.sendMessage(msg)
                                 wait['gift'] = False
                                 break
                             except:
@@ -1140,7 +1140,7 @@ def bot(op):
                 if wait["copy"] == True:
                     _name = msg.contentMetadata["displayName"]
                     copy = msg.contentMetadata["mid"]
-                    groups = vipro.getGroup(msg.to)
+                    groups = ningxue.getGroup(msg.to)
                     targets = []
                     for s in groups.members:
                         if _name in s.displayName:
@@ -1149,13 +1149,13 @@ def bot(op):
                         else:
                             targets.append(copy)
                     if targets == []:
-                        vipro.sendText(msg.to, "Not Found...")
+                        ningxue.sendText(msg.to, "Not Found...")
                         pass
                     else:
                         for target in targets:
                             try:
-                                vipro.CloneContactProfile(target)
-                                vipro.sendText(msg.to, "Copied (^_^)")
+                                ningxue.CloneContactProfile(target)
+                                ningxue.sendText(msg.to, "Copied (^_^)")
                                 wait['copy'] = False
                                 break
                             except:
@@ -1168,12 +1168,12 @@ def bot(op):
                 if wait['invite'] == True:
                      _name = msg.contentMetadata["displayName"]
                      invite = msg.contentMetadata["mid"]
-                     groups = vipro.getGroup(msg.to)
+                     groups = ningxue.getGroup(msg.to)
                      pending = groups.invitee
                      targets = []
                      for s in groups.members:
                          if _name in s.displayName:
-                             vipro.sendText(msg.to, _name + " Berada DiGrup Ini")
+                             ningxue.sendText(msg.to, _name + " Berada DiGrup Ini")
                          else:
                              targets.append(invite)
                      if targets == []:
@@ -1181,204 +1181,204 @@ def bot(op):
                      else:
                          for target in targets:
                              try:
-                                 vipro.findAndAddContactsByMid(target)
-                                 vipro.inviteIntoGroup(msg.to,[target])
-                                 vipro.sendText(msg.to,"Invite " + _name)
+                                 ningxue.findAndAddContactsByMid(target)
+                                 ningxue.inviteIntoGroup(msg.to,[target])
+                                 ningxue.sendText(msg.to,"Invite " + _name)
                                  wait['invite'] = False
                                  break                              
                              except:             
-                                      vipro.sendText(msg.to,"Limit Invite")
+                                      ningxue.sendText(msg.to,"Limit Invite")
                                       wait['invite'] = False
                                       break
                                   
  
             elif msg.text in ["Key creator","help creator","Help creator"]:
-                vipro.sendText(msg.to,creatorMessage)
+                ningxue.sendText(msg.to,creatorMessage)
 
             elif msg.text in ["Key group","help group","Help group"]:
-                vipro.sendText(msg.to,groupMessage)
+                ningxue.sendText(msg.to,groupMessage)
 
             elif msg.text in ["Key","help","Help"]:
-                vipro.sendText(msg.to,helpMessage)
+                ningxue.sendText(msg.to,helpMessage)
 
             elif msg.text in ["Key self","help self","Help self"]:
-                vipro.sendText(msg.to,selfMessage)
+                ningxue.sendText(msg.to,selfMessage)
 
             elif msg.text in ["Key bot","help bot","Help bot"]:
-                vipro.sendText(msg.to,botMessage)
+                ningxue.sendText(msg.to,botMessage)
 
             elif msg.text in ["Key set","help set","Help set"]:
-                vipro.sendText(msg.to,setMessage)
+                ningxue.sendText(msg.to,setMessage)
 
             elif msg.text in ["Key media","help media","Help media"]:
-                vipro.sendText(msg.to,mediaMessage)
+                ningxue.sendText(msg.to,mediaMessage)
                 
             elif msg.text in ["Key admin","help admin","Help admin"]:
-                vipro.sendText(msg.to,adminMessage)               
+                ningxue.sendText(msg.to,adminMessage)               
                 
 
  
             elif msg.text in ["List group"]:
-                    gid = vipro.getGroupIdsJoined()
+                    gid = ningxue.getGroupIdsJoined()
                     h = ""
 		    jml = 0
                     for i in gid:
-		        gn = vipro.getGroup(i).name
+		        gn = ningxue.getGroup(i).name
                         h += "♦【%s】\n" % (gn)
 		        jml += 1
-                    vipro.sendText(msg.to,"=======[List Group]=======\n"+ h +"\nTotal Group: "+str(jml))
+                    ningxue.sendText(msg.to,"=======[List Group]=======\n"+ h +"\nTotal Group: "+str(jml))
  
 	    elif "Ban group: " in msg.text:
 		grp = msg.text.replace("Ban group: ","")
-		gid = vipro.getGroupIdsJoined()
+		gid = ningxue.getGroupIdsJoined()
 		if msg.from_ in admin:
 		    for i in gid:
-		        h = vipro.getGroup(i).name
+		        h = ningxue.getGroup(i).name
 			if h == grp:
 			    wait["BlGroup"][i]=True
-			    vipro.sendText(msg.to, "Success Ban Group : "+grp)
+			    ningxue.sendText(msg.to, "Success Ban Group : "+grp)
 			else:
 			    pass
 		else:
-		    vipro.sendText(msg.to, "Khusus Admin")
+		    ningxue.sendText(msg.to, "Khusus Admin")
  
             elif msg.text in ["List ban","List ban group"]:
 		if msg.from_ in admin:
                     if wait["BlGroup"] == {}:
-                        vipro.sendText(msg.to,"Tidak Ada")
+                        ningxue.sendText(msg.to,"Tidak Ada")
                     else:
                         mc = ""
                         for gid in wait["BlGroup"]:
-                            mc += "-> " +vipro.getGroup(gid).name + "\n"
-                        vipro.sendText(msg.to,"===[Ban Group]===\n"+mc)
+                            mc += "-> " +ningxue.getGroup(gid).name + "\n"
+                        ningxue.sendText(msg.to,"===[Ban Group]===\n"+mc)
 		else:
-		    vipro.sendText(msg.to, "Khusus Admin")
+		    ningxue.sendText(msg.to, "Khusus Admin")
  
 	    elif msg.text in ["Del ban: "]:
 		if msg.from_ in admin:
 		    ng = msg.text.replace("Del ban: ","")
 		    for gid in wait["BlGroup"]:
-		        if vipro.getGroup(gid).name == ng:
+		        if ningxue.getGroup(gid).name == ng:
 			    del wait["BlGroup"][gid]
-			    vipro.sendText(msg.to, "Success del ban "+ng)
+			    ningxue.sendText(msg.to, "Success del ban "+ng)
 		        else:
 			    pass
 		else:
-		    vipro.sendText(msg.to, "Khusus Admin")
+		    ningxue.sendText(msg.to, "Khusus Admin")
  
             elif "Join group: " in msg.text:
 		ng = msg.text.replace("Join group: ","")
-		gid = vipro.getGroupIdsJoined()
+		gid = ningxue.getGroupIdsJoined()
 		try:
 		    if msg.from_ in Creator:
                         for i in gid:
-                            h = vipro.getGroup(i).name
+                            h = ningxue.getGroup(i).name
 		            if h == ng:
-		                vipro.inviteIntoGroup(i,[Creator])
-			        vipro.sendText(msg.to,"Success Join To ["+ h +"] Group")
+		                ningxue.inviteIntoGroup(i,[Creator])
+			        ningxue.sendText(msg.to,"Success Join To ["+ h +"] Group")
 			    else:
 			        pass
 		    else:
-		        vipro.sendText(msg.to,"Khusus Admin")
+		        ningxue.sendText(msg.to,"Khusus Admin")
 		except Exception as e:
-		    vipro.sendText(msg.to, str(e))
+		    ningxue.sendText(msg.to, str(e))
  
 	    elif "Leave group: " in msg.text:
 		ng = msg.text.replace("Leave group: ","")
-		gid = vipro.getGroupIdsJoined()
+		gid = ningxue.getGroupIdsJoined()
 		if msg.from_ in Creator:
                     for i in gid:
-                        h = vipro.getGroup(i).name
+                        h = ningxue.getGroup(i).name
 		        if h == ng:
-			    vipro.sendText(i,"Bot Di Paksa Keluar Oleh Owner!")
-		            vipro.leaveGroup(i)
-			    vipro.sendText(msg.to,"Success Left ["+ h +"] group")
+			    ningxue.sendText(i,"Bot Di Paksa Keluar Oleh Owner!")
+		            ningxue.leaveGroup(i)
+			    ningxue.sendText(msg.to,"Success Left ["+ h +"] group")
 			else:
 			    pass
 		else:
-		    vipro.sendText(msg.to,"Khusus Admin")
+		    ningxue.sendText(msg.to,"Khusus Admin")
  
 	    elif "Leave all group" == msg.text:
-		gid = vipro.getGroupIdsJoined()
+		gid = ningxue.getGroupIdsJoined()
                 if msg.from_ in Creator:
 		    for i in gid:
-			vipro.sendText(i,"Bot Di Paksa Keluar Oleh Owner!")
-		        vipro.leaveGroup(i)
-		    vipro.sendText(msg.to,"Success Leave All Group")
+			ningxue.sendText(i,"Bot Di Paksa Keluar Oleh Owner!")
+		        ningxue.leaveGroup(i)
+		    ningxue.sendText(msg.to,"Success Leave All Group")
 		else:
-		    vipro.sendText(msg.to,"Khusus Admin")
+		    ningxue.sendText(msg.to,"Khusus Admin")
 		   
 
             elif "Pict group: " in msg.text:
                 saya = msg.text.replace('Pict group: ','')
-                gid = vipro.getGroupIdsJoined()
+                gid = ningxue.getGroupIdsJoined()
                 for i in gid:
-                    h = vipro.getGroup(i).name
-                    gna = vipro.getGroup(i)
+                    h = ningxue.getGroup(i).name
+                    gna = ningxue.getGroup(i)
                     if h == saya:
-                        vipro.sendImageWithURL(msg.to,"http://dl.profile.line.naver.jp/"+ gna.pictureStatus)		    
+                        ningxue.sendImageWithURL(msg.to,"http://dl.profile.line.naver.jp/"+ gna.pictureStatus)		    
 		    
  
             elif msg.text in ["cancelall","Cancelall"]:
                 if msg.toType == 2:
-                    X = vipro.getGroup(msg.to)
+                    X = ningxue.getGroup(msg.to)
                     if X.invitee is not None:
                         gInviMids = [contact.mid for contact in X.invitee]
-                        vipro.cancelGroupInvitation(msg.to, gInviMids)
+                        ningxue.cancelGroupInvitation(msg.to, gInviMids)
                     else:
-                        vipro.sendText(msg.to,"Tidak Ada Yang Pending")
+                        ningxue.sendText(msg.to,"Tidak Ada Yang Pending")
                 else:
-                    vipro.sendText(msg.to,"Tidak Bisa Digunakan Diluar Group")
+                    ningxue.sendText(msg.to,"Tidak Bisa Digunakan Diluar Group")
  
             elif msg.text in ["Ourl","Url on"]:
                 if msg.toType == 2:
-                    X = vipro.getGroup(msg.to)
+                    X = ningxue.getGroup(msg.to)
                     X.preventJoinByTicket = False
-                    vipro.updateGroup(X)
-                    vipro.sendText(msg.to,"Url Sudah Aktif")
+                    ningxue.updateGroup(X)
+                    ningxue.sendText(msg.to,"Url Sudah Aktif")
                 else:
-                    vipro.sendText(msg.to,"Can not be used outside the group")
+                    ningxue.sendText(msg.to,"Can not be used outside the group")
  
             elif msg.text in ["Curl","Url off"]:
                 if msg.toType == 2:
-                    X = vipro.getGroup(msg.to)
+                    X = ningxue.getGroup(msg.to)
                     X.preventJoinByTicket = True
-                    vipro.updateGroup(X)
-                    vipro.sendText(msg.to,"Url Sudah Di Nonaktifkan")
+                    ningxue.updateGroup(X)
+                    ningxue.sendText(msg.to,"Url Sudah Di Nonaktifkan")
 
                 else:
-                    vipro.sendText(msg.to,"Can not be used outside the group")
+                    ningxue.sendText(msg.to,"Can not be used outside the group")
  
             elif msg.text in ["Join on","Autojoin on"]:
 		if msg.from_ in admin:
                     wait["AutoJoin"] = True
                     wait["AutoJoinCancel"] = False
-                    vipro.sendText(msg.to,"Auto Join Sudah Aktif")
+                    ningxue.sendText(msg.to,"Auto Join Sudah Aktif")
 		else:
-		    vipro.sendText(msg.to,"Khusus Admin")
+		    ningxue.sendText(msg.to,"Khusus Admin")
 
             elif msg.text in ["Join off","Autojoin off"]:
 		if msg.from_ in admin:
                     wait["AutoJoin"] = False
-                    vipro.sendText(msg.to,"Auto Join Sudah Di Nonaktifkan")
+                    ningxue.sendText(msg.to,"Auto Join Sudah Di Nonaktifkan")
 		else:
-		    vipro.sendText(msg.to,"Khusus Admin")
+		    ningxue.sendText(msg.to,"Khusus Admin")
 		    
 		    
             elif msg.text in ["Joincancel on","Autojoincancel on"]:
 		if msg.from_ in admin:
                     wait["AutoJoinCancel"] = True
                     wait["AutoJoin"] = False
-                    vipro.sendText(msg.to,"Auto Join Cancel Sudah Aktif")
+                    ningxue.sendText(msg.to,"Auto Join Cancel Sudah Aktif")
 		else:
-		    vipro.sendText(msg.to,"Khusus Admin")
+		    ningxue.sendText(msg.to,"Khusus Admin")
 
             elif msg.text in ["Joincancel off","Autojoincancel off"]:
 		if msg.from_ in admin:
                     wait["AutoJoinCancel"] = False
-                    vipro.sendText(msg.to,"Auto Join Cancel Sudah Di Nonaktifkan")
+                    ningxue.sendText(msg.to,"Auto Join Cancel Sudah Di Nonaktifkan")
 		else:
-		    vipro.sendText(msg.to,"Khusus Admin")		    
+		    ningxue.sendText(msg.to,"Khusus Admin")		    
 		    
  
             elif msg.text in ["Respon1 on"]:
@@ -1387,16 +1387,16 @@ def bot(op):
                     wait["detectMention2"] = False
                     wait["detectMention3"] = False
                     wait["kickMention"] = False
-                    vipro.sendText(msg.to,"Auto Respon1 Sudah Aktif")
+                    ningxue.sendText(msg.to,"Auto Respon1 Sudah Aktif")
 		else:
-		    vipro.sendText(msg.to,"Khusus Admin")
+		    ningxue.sendText(msg.to,"Khusus Admin")
 
             elif msg.text in ["Respon1 off"]:
 		if msg.from_ in admin:
                     wait["detectMention"] = False
-                    vipro.sendText(msg.to,"Auto Respon1 Sudah Off")
+                    ningxue.sendText(msg.to,"Auto Respon1 Sudah Off")
 		else:
-		    vipro.sendText(msg.to,"Khusus Admin")	
+		    ningxue.sendText(msg.to,"Khusus Admin")	
 		    
 		    
             elif msg.text in ["Respon2 on"]:
@@ -1405,15 +1405,15 @@ def bot(op):
                     wait["detectMention2"] = True
                     wait["detectMention3"] = False
                     wait["kickMention"] = False
-                    vipro.sendText(msg.to,"Auto Respon2 Sudah Aktif")
+                    ningxue.sendText(msg.to,"Auto Respon2 Sudah Aktif")
 		else:
-		    vipro.sendText(msg.to,"Khusus Admin")
+		    ningxue.sendText(msg.to,"Khusus Admin")
             elif msg.text in ["Respon2 off"]:
 		if msg.from_ in admin:
                     wait["detectMention2"] = False
-                    vipro.sendText(msg.to,"Auto Respon2 Sudah Off")
+                    ningxue.sendText(msg.to,"Auto Respon2 Sudah Off")
 		else:
-		    vipro.sendText(msg.to,"Khusus Admin")	
+		    ningxue.sendText(msg.to,"Khusus Admin")	
 		    
 
             elif msg.text in ["Respon3 on"]:
@@ -1422,16 +1422,16 @@ def bot(op):
                     wait["detectMention2"] = False
                     wait["detectMention3"] = True
                     wait["kickMention"] = False
-                    vipro.sendText(msg.to,"Auto Respon3 Sudah Aktif")
+                    ningxue.sendText(msg.to,"Auto Respon3 Sudah Aktif")
 		else:
-		    vipro.sendText(msg.to,"Khusus Admin")
+		    ningxue.sendText(msg.to,"Khusus Admin")
 
             elif msg.text in ["Respon3 off"]:
 		if msg.from_ in admin:
                     wait["detectMention3"] = False
-                    vipro.sendText(msg.to,"Auto Respon3 Sudah Off")
+                    ningxue.sendText(msg.to,"Auto Respon3 Sudah Off")
 		else:
-		    vipro.sendText(msg.to,"Khusus Admin")	
+		    ningxue.sendText(msg.to,"Khusus Admin")	
 		    
  
             elif msg.text in ["Responkick on"]:
@@ -1440,64 +1440,64 @@ def bot(op):
                     wait["detectMention"] = False
                     wait["detectMention2"] = False
                     wait["detectMention3"] = False                    
-                    vipro.sendText(msg.to,"Auto Respon Kick Sudah Aktif")
+                    ningxue.sendText(msg.to,"Auto Respon Kick Sudah Aktif")
 		else:
-		    vipro.sendText(msg.to,"Khusus Admin")
+		    ningxue.sendText(msg.to,"Khusus Admin")
 
             elif msg.text in ["Responkick off"]:
 		if msg.from_ in admin:
                     wait["kickMention"] = False                    
-                    vipro.sendText(msg.to,"Auto Respon Kick Sudah Off")
+                    ningxue.sendText(msg.to,"Auto Respon Kick Sudah Off")
 		else:
-		    vipro.sendText(msg.to,"Khusus Admin")			  
+		    ningxue.sendText(msg.to,"Khusus Admin")			  
 		    
  
 	    elif msg.text in ["Autocancel on"]:
 	     if msg.from_ in admin:	        
                 wait["AutoCancel"] = True
-                vipro.sendText(msg.to,"Auto Cancel Sudah Aktif")
+                ningxue.sendText(msg.to,"Auto Cancel Sudah Aktif")
 		print wait["AutoCancel"]
 	     else:
-		    vipro.sendText(msg.to,"Khusus Admin")		
+		    ningxue.sendText(msg.to,"Khusus Admin")		
 
 	    elif msg.text in ["Autocancel off"]:
 	     if msg.from_ in admin:	        
                 wait["AutoCancel"] = False
-                vipro.sendText(msg.to,"Auto Cancel Sudah Di Nonaktifkan")
+                ningxue.sendText(msg.to,"Auto Cancel Sudah Di Nonaktifkan")
 		print wait["AutoCancel"]
 	     else:
-		    vipro.sendText(msg.to,"Khusus Admin")	
+		    ningxue.sendText(msg.to,"Khusus Admin")	
 		    
 
 	    elif msg.text in ["Invitepro on"]:
 	     if msg.from_ in admin:	        
                 wait["inviteprotect"] = True
-                vipro.sendText(msg.to,"Invite Protect Sudah Aktif")
+                ningxue.sendText(msg.to,"Invite Protect Sudah Aktif")
 		print wait["inviteprotect"]
 	     else:
-		    vipro.sendText(msg.to,"Khusus Admin")		
+		    ningxue.sendText(msg.to,"Khusus Admin")		
 
 	    elif msg.text in ["Invitepro off"]:
 	     if msg.from_ in admin:	        
                 wait["inviteprotect"] = False
-                vipro.sendText(msg.to,"Invite Protect Sudah Di Nonaktifkan")
+                ningxue.sendText(msg.to,"Invite Protect Sudah Di Nonaktifkan")
 		print wait["inviteprotect"]
 	     else:
-		    vipro.sendText(msg.to,"Khusus Admin")		    
+		    ningxue.sendText(msg.to,"Khusus Admin")		    
 
 	    elif "Qr on" in msg.text:
 	     if msg.from_ in admin:	        
 	        wait["Qr"] = True
-	    	vipro.sendText(msg.to,"QR Protect Sudah Aktif")
+	    	ningxue.sendText(msg.to,"QR Protect Sudah Aktif")
 	     else:
-		    vipro.sendText(msg.to,"Khusus Admin")	    	
+		    ningxue.sendText(msg.to,"Khusus Admin")	    	
 
 	    elif "Qr off" in msg.text:
 	     if msg.from_ in admin:	        
 	    	wait["Qr"] = False
-	    	vipro.sendText(msg.to,"Qr Protect Sudah Di Nonaktifkan")
+	    	ningxue.sendText(msg.to,"Qr Protect Sudah Di Nonaktifkan")
 	     else:
-		    vipro.sendText(msg.to,"Khusus Admin")	    	
+		    ningxue.sendText(msg.to,"Khusus Admin")	    	
 
                         
 
