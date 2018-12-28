@@ -21,7 +21,7 @@
 - `cd ningxue`
 - `python2 ningxue.py`
 
-如何再次取得代碼 (主機重啟後) :
+如何再次啟動半垢 (主機重啟後) :
 ------
 - `cd ningxue`
 - `python2 ningxue.py`
