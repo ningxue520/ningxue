@@ -1504,16 +1504,16 @@ def bot(op):
 	    elif "Autokick on" in msg.text:
 	     if msg.from_ in admin:	 	        
 		     wait["AutoKick"] = True
-		     vipro.sendText(msg.to,"Auto Kick Sudah Aktif")
+		     ningxue.sendText(msg.to,"Auto Kick Sudah Aktif")
 	     else:
-	        vipro.sendText(msg.to,"Khusus Admin")	     
+	        ningxue.sendText(msg.to,"Khusus Admin")	     
 
 	    elif "Autokick off" in msg.text:
 	     if msg.from_ in admin:	 	        
 		     wait["AutoKick"] = False
-		     vipro.sendText(msg.to,"Auto Kick Sudah Di Nonaktifkan")
+		     ningxue.sendText(msg.to,"Auto Kick Sudah Di Nonaktifkan")
 	     else:
-	        vipro.sendText(msg.to,"Khusus Admin")	     
+	        ningxue.sendText(msg.to,"Khusus Admin")	     
 
 
             elif msg.text in ["Allprotect on"]:
@@ -1522,9 +1522,9 @@ def bot(op):
                     wait["inviteprotect"] = True                   
                     wait["AutoKick"] = True
                     wait["Qr"] = True
-                    vipro.sendText(msg.to,"All Protect Sudah Aktif Semua")
+                    ningxue.sendText(msg.to,"All Protect Sudah Aktif Semua")
 		else:
-		    vipro.sendText(msg.to,"Khusus Admin")
+		    ningxue.sendText(msg.to,"Khusus Admin")
 
             elif msg.text in ["Allprotect off"]:
 		if msg.from_ in admin:
@@ -1532,46 +1532,46 @@ def bot(op):
                     wait["inviteprotect"] = False                    
                     wait["AutoKick"] = False
                     wait["Qr"] = False
-                    vipro.sendText(msg.to,"All Protect Sudah Di Nonaktifkan Semua")
+                    ningxue.sendText(msg.to,"All Protect Sudah Di Nonaktifkan Semua")
 		else:
-		    vipro.sendText(msg.to,"Khusus Admin")
+		    ningxue.sendText(msg.to,"Khusus Admin")
 
 
             elif msg.text in ["K on","Contact on"]:
                 wait["Contact"] = True
-                vipro.sendText(msg.to,"Contact Sudah Aktif")
+                ningxue.sendText(msg.to,"Contact Sudah Aktif")
 
             elif msg.text in ["K off","Contact off"]:
                 wait["Contact"] = False
-                vipro.sendText(msg.to,"Contact Sudah Di Nonaktifkan")
+                ningxue.sendText(msg.to,"Contact Sudah Di Nonaktifkan")
                 
 
             elif msg.text in ["Alwaysread on"]:
                 wait["alwaysRead"] = True
-                vipro.sendText(msg.to,"Always Read Sudah Aktif")
+                ningxue.sendText(msg.to,"Always Read Sudah Aktif")
 
             elif msg.text in ["Alwaysread off"]:
                 wait["alwaysRead"] = False
-                vipro.sendText(msg.to,"Always Read Sudah Di Nonaktifkan")                
+                ningxue.sendText(msg.to,"Always Read Sudah Di Nonaktifkan")                
 
 
             elif msg.text in ["Notif on"]:
                 if wait["Sambutan"] == True:
                     if wait["lang"] == "JP":
-                        vipro.sendText(msg.to,"Sambutan Di Aktifkanヾ(*´∀｀*)ﾉ")
+                        ningxue.sendText(msg.to,"Sambutan Di Aktifkanヾ(*´∀｀*)ﾉ")
                 else:
                     wait["Sambutan"] = True
                     if wait["lang"] == "JP":
-                        vipro.sendText(msg.to,"Sudah Onヽ(´▽｀)/")
+                        ningxue.sendText(msg.to,"Sudah Onヽ(´▽｀)/")
 
             elif msg.text in ["Notif off"]:
                 if wait["Sambutan"] == False:
                     if wait["lang"] == "JP":
-                        vipro.sendText(msg.to,"Sambutan Di Nonaktifkan(　＾∇＾)")
+                        ningxue.sendText(msg.to,"Sambutan Di Nonaktifkan(　＾∇＾)")
                 else:
                     wait["Sambutan"] = False
                     if wait["lang"] == "JP":
-                        vipro.sendText(msg.to,"Sudah Off(p′︵‵。)")
+                        ningxue.sendText(msg.to,"Sudah Off(p′︵‵。)")
                         
                         
             elif "Sider on" in msg.text:
@@ -1585,15 +1585,15 @@ def bot(op):
                 cctv['sidermem'][msg.to] = ""
                 cctv['cyduk'][msg.to]=True
                 wait["Sider"] = True
-                vipro.sendText(msg.to,"Siap On Cek Sider")
+                ningxue.sendText(msg.to,"Siap On Cek Sider")
                 
             elif "Sider off" in msg.text:
                 if msg.to in cctv['point']:
                     cctv['cyduk'][msg.to]=False
                     wait["Sider"] = False
-                    vipro.sendText(msg.to, "Cek Sider Off")
+                    ningxue.sendText(msg.to, "Cek Sider Off")
                 else:
-                    vipro.sendText(msg.to, "Heh Belom Di Set")                         
+                    ningxue.sendText(msg.to, "Heh Belom Di Set")                         
 
 
             elif msg.text in ["Status"]:
@@ -1628,7 +1628,7 @@ def bot(op):
 		else:md+="╠➩❌ Auto Sider: Off\n"	
 		if wait["Simi"] == True: md+="╠➩✔️ Simisimi : On\n"
 		else:md+="╠➩❌ Simisimi: Off\n"		
-                vipro.sendText(msg.to,"╔═════════════════════════\n""║           ☆☞ S T A T U S ☜☆\n""╠═════════════════════════\n"+md+"╚═════════════════════════")
+                ningxue.sendText(msg.to,"╔═════════════════════════\n""║           ☆☞ S T A T U S ☜☆\n""╠═════════════════════════\n"+md+"╚═════════════════════════")
 
 
             elif msg.text in ["Gift","gift"]:
@@ -1637,7 +1637,7 @@ def bot(op):
                                     'PRDTYPE': 'THEME',
                                     'MSGTPL': '8'}
                 msg.text = None
-                vipro.sendMessage(msg)
+                ningxue.sendMessage(msg)
                 
                 
             elif "Gift1 " in msg.text:
@@ -1647,7 +1647,7 @@ def bot(op):
                        nk2 = nk1.replace("@","")
                        nk3 = nk2.rstrip()
                        _name = nk3
-                       gs = vipro.getGroup(msg.to)
+                       gs = ningxue.getGroup(msg.to)
                        targets = []
                        for s in gs.members:
                            if _name in s.displayName:
@@ -1658,7 +1658,7 @@ def bot(op):
                        else:
                            for target in targets:
                                 try:
-                                    vipro.sendText(msg.to,_name + " Check Your Gift")
+                                    ningxue.sendText(msg.to,_name + " Check Your Gift")
                                     msg.contentType = 9
                                     msg.contentMetadata= {'PRDTYPE': 'STICKER',
                                                          'STKVER': '1',
@@ -1666,7 +1666,7 @@ def bot(op):
                                                          'STKPKGID': '1380280'}
                                     msg.to = target
                                     msg.text = None
-                                    vipro.sendMessage(msg)
+                                    ningxue.sendMessage(msg)
                                 except:
                                     msg.contentMetadata = {'mid': target}
 
@@ -1677,7 +1677,7 @@ def bot(op):
                        nk2 = nk1.replace("@","")
                        nk3 = nk2.rstrip()
                        _name = nk3
-                       gs = vipro.getGroup(msg.to)
+                       gs = ningxue.getGroup(msg.to)
                        targets = []
                        for s in gs.members:
                            if _name in s.displayName:
@@ -1688,7 +1688,7 @@ def bot(op):
                        else:
                            for target in targets:
                                 try:
-                                    vipro.sendText(msg.to,_name + " Check Your Gift")
+                                    ningxue.sendText(msg.to,_name + " Check Your Gift")
                                     msg.contentType = 9
                                     msg.contentMetadata= {'PRDTYPE': 'STICKER',
                                                          'STKVER': '1',
@@ -1696,7 +1696,7 @@ def bot(op):
                                                          'STKPKGID': '1360738'}
                                     msg.to = target
                                     msg.text = None
-                                    vipro.sendMessage(msg)
+                                    ningxue.sendMessage(msg)
                                 except:
                                     msg.contentMetadata = {'mid': target}
 
@@ -1707,7 +1707,7 @@ def bot(op):
                        nk2 = nk1.replace("@","")
                        nk3 = nk2.rstrip()
                        _name = nk3
-                       gs = vipro.getGroup(msg.to)
+                       gs = ningxue.getGroup(msg.to)
                        targets = []
                        for s in gs.members:
                            if _name in s.displayName:
@@ -1718,7 +1718,7 @@ def bot(op):
                        else:
                            for target in targets:
                                 try:
-                                    vipro.sendText(msg.to,_name + " Check Your Gift")
+                                    ningxue.sendText(msg.to,_name + " Check Your Gift")
                                     msg.contentType = 9
                                     msg.contentMetadata= {'PRDTYPE': 'STICKER',
                                                          'STKVER': '1',
@@ -1726,7 +1726,7 @@ def bot(op):
                                                          'STKPKGID': '1395389'}
                                     msg.to = target
                                     msg.text = None
-                                    vipro.sendMessage(msg)
+                                    ningxue.sendMessage(msg)
                                 except:
                                     msg.contentMetadata = {'mid': target}
 
@@ -1737,7 +1737,7 @@ def bot(op):
                        nk2 = nk1.replace("@","")
                        nk3 = nk2.rstrip()
                        _name = nk3
-                       gs = vipro.getGroup(msg.to)
+                       gs = ningxue.getGroup(msg.to)
                        targets = []
                        for s in gs.members:
                            if _name in s.displayName:
@@ -1748,7 +1748,7 @@ def bot(op):
                        else:
                            for target in targets:
                                 try:
-                                    vipro.sendText(msg.to,_name + " Check Your Gift")
+                                    ningxue.sendText(msg.to,_name + " Check Your Gift")
                                     msg.contentType = 9
                                     msg.contentMetadata= {'PRDTYPE': 'STICKER',
                                                          'STKVER': '1',
@@ -1756,7 +1756,7 @@ def bot(op):
                                                          'STKPKGID': '1329191'}
                                     msg.to = target
                                     msg.text = None
-                                    vipro.sendMessage(msg)
+                                    ningxue.sendMessage(msg)
                                 except:
                                     msg.contentMetadata = {'mid': target}
 
@@ -1767,7 +1767,7 @@ def bot(op):
                        nk2 = nk1.replace("@","")
                        nk3 = nk2.rstrip()
                        _name = nk3
-                       gs = vipro.getGroup(msg.to)
+                       gs = ningxue.getGroup(msg.to)
                        targets = []
                        for s in gs.members:
                            if _name in s.displayName:
@@ -1778,7 +1778,7 @@ def bot(op):
                        else:
                            for target in targets:
                                 try:
-                                    vipro.sendText(msg.to,_name + " Check Your Gift")
+                                    ningxue.sendText(msg.to,_name + " Check Your Gift")
                                     msg.contentType = 9
                                     msg.contentMetadata= {'PRDTYPE': 'STICKER',
                                                          'STKVER': '1',
@@ -1786,7 +1786,7 @@ def bot(op):
                                                          'STKPKGID': '9057'}
                                     msg.to = target
                                     msg.text = None
-                                    vipro.sendMessage(msg)
+                                    ningxue.sendMessage(msg)
                                 except:
                                     msg.contentMetadata = {'mid': target}
 
@@ -1797,7 +1797,7 @@ def bot(op):
                        nk2 = nk1.replace("@","")
                        nk3 = nk2.rstrip()
                        _name = nk3
-                       gs = vipro.getGroup(msg.to)
+                       gs = ningxue.getGroup(msg.to)
                        targets = []
                        for s in gs.members:
                            if _name in s.displayName:
@@ -1808,7 +1808,7 @@ def bot(op):
                        else:
                            for target in targets:
                                 try:
-                                    vipro.sendText(msg.to,_name + " Check Your Gift")
+                                    ningxue.sendText(msg.to,_name + " Check Your Gift")
                                     msg.contentType = 9
                                     msg.contentMetadata= {'PRDTYPE': 'STICKER',
                                                          'STKVER': '1',
@@ -1816,7 +1816,7 @@ def bot(op):
                                                          'STKPKGID': '9167'}
                                     msg.to = target
                                     msg.text = None
-                                    vipro.sendMessage(msg)
+                                    ningxue.sendMessage(msg)
                                 except:
                                     msg.contentMetadata = {'mid': target}
 
@@ -1827,7 +1827,7 @@ def bot(op):
                        nk2 = nk1.replace("@","")
                        nk3 = nk2.rstrip()
                        _name = nk3
-                       gs = vipro.getGroup(msg.to)
+                       gs = ningxue.getGroup(msg.to)
                        targets = []
                        for s in gs.members:
                            if _name in s.displayName:
@@ -1838,7 +1838,7 @@ def bot(op):
                        else:
                            for target in targets:
                                 try:
-                                    vipro.sendText(msg.to,_name + " Check Your Gift")
+                                    ningxue.sendText(msg.to,_name + " Check Your Gift")
                                     msg.contentType = 9
                                     msg.contentMetadata= {'PRDTYPE': 'STICKER',
                                                          'STKVER': '1',
@@ -1846,7 +1846,7 @@ def bot(op):
                                                          'STKPKGID': '7334'}
                                     msg.to = target
                                     msg.text = None
-                                    vipro.sendMessage(msg)
+                                    ningxue.sendMessage(msg)
                                 except:
                                     msg.contentMetadata = {'mid': target}
 
@@ -1857,7 +1857,7 @@ def bot(op):
                        nk2 = nk1.replace("@","")
                        nk3 = nk2.rstrip()
                        _name = nk3
-                       gs = vipro.getGroup(msg.to)
+                       gs = ningxue.getGroup(msg.to)
                        targets = []
                        for s in gs.members:
                            if _name in s.displayName:
@@ -1868,7 +1868,7 @@ def bot(op):
                        else:
                            for target in targets:
                                 try:
-                                    vipro.sendText(msg.to,_name + " Check Your Gift")
+                                    ningxue.sendText(msg.to,_name + " Check Your Gift")
                                     msg.contentType = 9
                                     msg.contentMetadata= {'PRDTYPE': 'STICKER',
                                                          'STKVER': '1',
@@ -1876,7 +1876,7 @@ def bot(op):
                                                          'STKPKGID': '1380280'}
                                     msg.to = target
                                     msg.text = None
-                                    vipro.sendMessage(msg)
+                                    ningxue.sendMessage(msg)
                                 except:
                                     msg.contentMetadata = {'mid': target}
 
@@ -1887,7 +1887,7 @@ def bot(op):
                        nk2 = nk1.replace("@","")
                        nk3 = nk2.rstrip()
                        _name = nk3
-                       gs = vipro.getGroup(msg.to)
+                       gs = ningxue.getGroup(msg.to)
                        targets = []
                        for s in gs.members:
                            if _name in s.displayName:
@@ -1898,7 +1898,7 @@ def bot(op):
                        else:
                            for target in targets:
                                 try:
-                                    vipro.sendText(msg.to,_name + " Check Your Gift")
+                                    ningxue.sendText(msg.to,_name + " Check Your Gift")
                                     msg.contentType = 9
                                     msg.contentMetadata= {'PRDTYPE': 'STICKER',
                                                          'STKVER': '1',
@@ -1906,7 +1906,7 @@ def bot(op):
                                                          'STKPKGID': '1405277'}
                                     msg.to = target
                                     msg.text = None
-                                    vipro.sendMessage(msg)
+                                    ningxue.sendMessage(msg)
                                 except:
                                     msg.contentMetadata = {'mid': target}
 
@@ -1917,7 +1917,7 @@ def bot(op):
                        nk2 = nk1.replace("@","")
                        nk3 = nk2.rstrip()
                        _name = nk3
-                       gs = vipro.getGroup(msg.to)
+                       gs = ningxue.getGroup(msg.to)
                        targets = []
                        for s in gs.members:
                            if _name in s.displayName:
@@ -1928,7 +1928,7 @@ def bot(op):
                        else:
                            for target in targets:
                                 try:
-                                    vipro.sendText(msg.to,_name + " Check Your Gift")
+                                    ningxue.sendText(msg.to,_name + " Check Your Gift")
                                     msg.contentType = 9
                                     msg.contentMetadata= {'PRDTYPE': 'STICKER',
                                                          'STKVER': '1',
@@ -1936,7 +1936,7 @@ def bot(op):
                                                          'STKPKGID': '1296261'}
                                     msg.to = target
                                     msg.text = None
-                                    vipro.sendMessage(msg)
+                                    ningxue.sendMessage(msg)
                                 except:
                                     msg.contentMetadata = {'mid': target}
 
@@ -1947,7 +1947,7 @@ def bot(op):
                                     'STKPKGID': '1',
                                     'STKVER': '100'}
                 msg.text = None
-                vipro.sendMessage(msg)
+                ningxue.sendMessage(msg)
 
             elif msg.text.lower() in ["hehehe","hehe"]:
                 msg.contentType = 7
@@ -1955,7 +1955,7 @@ def bot(op):
                                     'STKPKGID': '1',
                                     'STKVER': '100'}
                 msg.text = None
-                vipro.sendMessage(msg)
+                ningxue.sendMessage(msg)
 
             elif msg.text.lower() in ["galau"]:
                 msg.contentType = 7
@@ -1963,7 +1963,7 @@ def bot(op):
                                     'STKPKGID': '1',
                                     'STKVER': '100'}
                 msg.text = None
-                vipro.sendMessage(msg)
+                ningxue.sendMessage(msg)
 
             elif msg.text.lower() in ["you","kau","kamu"]:
                 msg.contentType = 7
@@ -1971,7 +1971,7 @@ def bot(op):
                                     'STKPKGID': '1',
                                     'STKVER': '100'}
                 msg.text = None
-                vipro.sendMessage(msg)
+                ningxue.sendMessage(msg)
 
             elif msg.text.lower() in ["marah","hadeuh","hadeh"]:
                 msg.contentType = 7
@@ -1979,7 +1979,7 @@ def bot(op):
                                     'STKPKGID': '1',
                                     'STKVER': '100'}
                 msg.text = None
-                vipro.sendMessage(msg)
+                ningxue.sendMessage(msg)
 
             elif msg.text.lower() in ["please","pliss","mohon","tolong"]:
                 msg.contentType = 7
@@ -1987,7 +1987,7 @@ def bot(op):
                                     'STKPKGID': '1',
                                     'STKVER': '100'}
                 msg.text = None
-                vipro.sendMessage(msg)
+                ningxue.sendMessage(msg)
 
             elif msg.text.lower() in ["haa","haaa","kaget"]:
                 msg.contentType = 7
@@ -1995,7 +1995,7 @@ def bot(op):
                                     'STKPKGID': '1',
                                     'STKVER': '100'}
                 msg.text = None
-                vipro.sendMessage(msg)
+                ningxue.sendMessage(msg)
 
             elif msg.text.lower() in ["lucu","ngakak","lol"]:
                 msg.contentType = 7
@@ -2003,7 +2003,7 @@ def bot(op):
                                     'STKPKGID': '1',
                                     'STKVER': '100'}
                 msg.text = None
-                vipro.sendMessage(msg)
+                ningxue.sendMessage(msg)
 
             elif msg.text.lower() in ["hmm","hmmm"]:
                 msg.contentType = 7
@@ -2011,7 +2011,7 @@ def bot(op):
                                     'STKPKGID': '1',
                                     'STKVER': '100'}
                 msg.text = None
-                vipro.sendMessage(msg)
+                ningxue.sendMessage(msg)
 
             elif msg.text.lower() in ["tidur"]:
                 msg.contentType = 7
@@ -2019,7 +2019,7 @@ def bot(op):
                                     'STKPKGID': '1',
                                     'STKVER': '100'}
                 msg.text = None
-                vipro.sendMessage(msg)
+                ningxue.sendMessage(msg)
 
             elif msg.text.lower() in ["gemes"]:
                 msg.contentType = 7
@@ -2027,7 +2027,7 @@ def bot(op):
                                     'STKPKGID': '1',
                                     'STKVER': '100'}
                 msg.text = None
-                vipro.sendMessage(msg)
+                ningxue.sendMessage(msg)
 
             elif msg.text.lower() in ["cantik","imut"]:
                 msg.contentType = 7
@@ -2035,7 +2035,7 @@ def bot(op):
                                     'STKPKGID': '1',
                                     'STKVER': '100'}
                 msg.text = None
-                vipro.sendMessage(msg)
+                ningxue.sendMessage(msg)
 
             elif msg.text.lower() in ["nyanyi","lalala"]:
                 msg.contentType = 7
@@ -2043,7 +2043,7 @@ def bot(op):
                                     'STKPKGID': '1',
                                     'STKVER': '100'}
                 msg.text = None
-                vipro.sendMessage(msg)
+                ningxue.sendMessage(msg)
 
             elif msg.text.lower() in ["gugup"]:
                 msg.contentType = 7
@@ -2051,7 +2051,7 @@ def bot(op):
                                     'STKPKGID': '1',
                                     'STKVER': '100'}
                 msg.text = None
-                vipro.sendMessage(msg)
+                ningxue.sendMessage(msg)
 
             elif msg.text.lower() in ["ok","oke","okay","oce","okee","sip","siph"]:
                 msg.contentType = 7
@@ -2059,7 +2059,7 @@ def bot(op):
                                     'STKPKGID': '1',
                                     'STKVER': '100'}
                 msg.text = None
-                vipro.sendMessage(msg)
+                ningxue.sendMessage(msg)
 
             elif msg.text.lower() in ["mantab","mantap","nice","keren"]:
                 msg.contentType = 7
@@ -2067,7 +2067,7 @@ def bot(op):
                                     'STKPKGID': '1',
                                     'STKVER': '100'}
                 msg.text = None
-                vipro.sendMessage(msg)
+                ningxue.sendMessage(msg)
 
             elif msg.text.lower() in ["ngejek"]:
                 msg.contentType = 7
@@ -2075,7 +2075,7 @@ def bot(op):
                                     'STKPKGID': '1',
                                     'STKVER': '100'}
                 msg.text = None
-                vipro.sendMessage(msg)
+                ningxue.sendMessage(msg)
 
             elif msg.text.lower() in ["nangis","sedih"]:
                 msg.contentType = 7
@@ -2083,7 +2083,7 @@ def bot(op):
                                     'STKPKGID': '1',
                                     'STKVER': '100'}
                 msg.text = None
-                vipro.sendMessage(msg)
+                ningxue.sendMessage(msg)
 
             elif msg.text.lower() in ["woi","kampret"]:
                 msg.contentType = 7
@@ -2091,7 +2091,7 @@ def bot(op):
                                     'STKPKGID': '1',
                                     'STKVER': '100'}
                 msg.text = None
-                vipro.sendMessage(msg)
+                ningxue.sendMessage(msg)
 
             elif msg.text.lower() in ["huft"]:
                 msg.contentType = 7
@@ -2099,11 +2099,11 @@ def bot(op):
                                     'STKPKGID': '1',
                                     'STKVER': '100'}
                 msg.text = None
-                vipro.sendMessage(msg)
+                ningxue.sendMessage(msg)
                 
 
             elif "tag all" == msg.text.lower():
-                 group = vipro.getGroup(msg.to)
+                 group = ningxue.getGroup(msg.to)
                  nama = [contact.mid for contact in group.members]
                  nm1, nm2, nm3, nm4, nm5, jml = [], [], [], [], [], len(nama)
                  if jml <= 100:
@@ -2159,10 +2159,10 @@ def bot(op):
                  cnt = Message()
                  cnt.text = "Jumlah:\n" + str(jml) +  " Members"
                  cnt.to = msg.to
-                 vipro.sendMessage(cnt)
+                 ningxue.sendMessage(cnt)
                  
             elif "tagall" == msg.text.lower():
-                 group = vipro.getGroup(msg.to)
+                 group = ningxue.getGroup(msg.to)
                  nama = [contact.mid for contact in group.members]
                  nm1, nm2, nm3, nm4, nm5, jml = [], [], [], [], [], len(nama)
                  if jml <= 100:
@@ -2218,12 +2218,12 @@ def bot(op):
                  cnt = Message()
                  cnt.text = "Jumlah:\n" + str(jml) +  " Members"
                  cnt.to = msg.to
-                 vipro.sendMessage(cnt)                 
+                 ningxue.sendMessage(cnt)                 
 
 
             elif msg.text in ["Setview","Setpoint","Cctv"]:
                 subprocess.Popen("echo '' > dataSeen/"+msg.to+".txt", shell=True, stdout=subprocess.PIPE)
-                vipro.sendText(msg.to, "☆Checkpoint Checked☆")
+                ningxue.sendText(msg.to, "☆Checkpoint Checked☆")
                 print "Setview"
 
             elif msg.text in ["Viewseen","Check","Ciduk","Cyduk"]:
@@ -2249,7 +2249,7 @@ def bot(op):
                         except IndexError:
                             conName.append('nones')
                             pass
-                    contactId = vipro.getContacts(recheckData)
+                    contactId = ningxue.getContacts(recheckData)
                     for v in range(len(recheckData)):
                         dataResult.append(contactId[v].displayName + ' ('+timeSeen[v]+')')
                         pass
@@ -2257,11 +2257,11 @@ def bot(op):
                         tukang = "╔═════════════════════════\n║         ☆☞ LIST VIEWERS ☜☆\n╠═════════════════════════\n╠➩"
                         grp = '\n╠➩ '.join(str(f) for f in dataResult)
                         total = '\n╠═════════════════════════\n╠➩ Total %i Viewers (%s)' % (len(dataResult), datetime.now().strftime('%H:%M:%S')) + "\n╚═════════════════════════"
-                        vipro.sendText(msg.to, "%s %s %s" % (tukang, grp, total))
+                        ningxue.sendText(msg.to, "%s %s %s" % (tukang, grp, total))
                         subprocess.Popen("echo '' > dataSeen/"+msg.to+".txt", shell=True, stdout=subprocess.PIPE)
-                        vipro.sendText(msg.to, "☆Auto Checkpoint☆")                        
+                        ningxue.sendText(msg.to, "☆Auto Checkpoint☆")                        
                     else:
-                        vipro.sendText(msg.to, "☆Belum Ada Viewers☆")
+                        ningxue.sendText(msg.to, "☆Belum Ada Viewers☆")
                     print "Viewseen"
 
 
@@ -2273,124 +2273,124 @@ def bot(op):
 		        mentionees = mention['MENTIONEES']
 		        print mentionees
 		        for mention in mentionees:
-			    vipro.kickoutFromGroup(msg.to,[mention['M']])
+			    ningxue.kickoutFromGroup(msg.to,[mention['M']])
 
 	    elif "Set member: " in msg.text:
 		if msg.from_ in admin:	 	        
 		    jml = msg.text.replace("Set member: ","")
 		    wait["Members"] = int(jml)
-		    vipro.sendText(msg.to, "Jumlah minimal member telah di set : "+jml)
+		    ningxue.sendText(msg.to, "Jumlah minimal member telah di set : "+jml)
 
 	    elif "Add all" in msg.text:
-		    thisgroup = vipro.getGroups([msg.to])
+		    thisgroup = ningxue.getGroups([msg.to])
 		    Mids = [contact.mid for contact in thisgroup[0].members]
 		    mi_d = Mids[:33]
-		    vipro.findAndAddContactsByMids(mi_d)
-		    vipro.sendText(msg.to,"Success Add all")
+		    ningxue.findAndAddContactsByMids(mi_d)
+		    ningxue.sendText(msg.to,"Success Add all")
 
 
             elif msg.text in ["Invite"]:
                 wait["invite"] = True
-                vipro.sendText(msg.to,"Send Contact")
+                ningxue.sendText(msg.to,"Send Contact")
                 
                 
 
             elif msg.text in ["Auto like"]:
                 wait["likeOn"] = True
-                vipro.sendText(msg.to,"Shere Post Kamu Yang Mau Di Like!")                
+                ningxue.sendText(msg.to,"Shere Post Kamu Yang Mau Di Like!")                
 
 
             elif msg.text in ["Steal contact"]:
                 wait["steal"] = True
-                vipro.sendText(msg.to,"Send Contact")
+                ningxue.sendText(msg.to,"Send Contact")
                 
 
             elif msg.text in ["Giftbycontact"]:
                 wait["gift"] = True
-                vipro.sendText(msg.to,"Send Contact") 
+                ningxue.sendText(msg.to,"Send Contact") 
                 
             elif msg.text in ["Copycontact"]:
                 wait["copy"] = True
-                vipro.sendText(msg.to,"Send Contact") 
+                ningxue.sendText(msg.to,"Send Contact") 
                 
             elif msg.text in ["Sticker on"]:
                 wait["sticker"] = True
-                vipro.sendText(msg.to,"Sticker ID Detect Already On.")  
+                ningxue.sendText(msg.to,"Sticker ID Detect Already On.")  
                 
             elif msg.text in ["Bot off"]:
                 wait["Bot"] = False
-                vipro.sendText(msg.to,"Bot Sudah Di Nonaktifkan.")  
+                ningxue.sendText(msg.to,"Bot Sudah Di Nonaktifkan.")  
 
 	    elif "Recover" in msg.text:
-		thisgroup = vipro.getGroups([msg.to])
+		thisgroup = ningxue.getGroups([msg.to])
 		Mids = [contact.mid for contact in thisgroup[0].members]
 		mi_d = Mids[:33]
-		vipro.createGroup("Recover", mi_d)
-		vipro.sendText(msg.to,"Success recover")
+		ningxue.createGroup("Recover", mi_d)
+		ningxue.sendText(msg.to,"Success recover")
 
 
 
             elif ("Gn: " in msg.text):
                 if msg.toType == 2:
-                    X = vipro.getGroup(msg.to)
+                    X = ningxue.getGroup(msg.to)
                     X.name = msg.text.replace("Gn: ","")
-                    vipro.updateGroup(X)
+                    ningxue.updateGroup(X)
                 else:
-                    vipro.sendText(msg.to,"It can't be used besides the group.")
+                    ningxue.sendText(msg.to,"It can't be used besides the group.")
 
             elif "Kick: " in msg.text:
                 midd = msg.text.replace("Kick: ","")
 		if midd not in admin:
-		    vipro.kickoutFromGroup(msg.to,[midd])
+		    ningxue.kickoutFromGroup(msg.to,[midd])
 		else:
-		    vipro.sendText(msg.to,"Admin Detected")
+		    ningxue.sendText(msg.to,"Admin Detected")
 
             elif "Invite: " in msg.text:
                 midd = msg.text.replace("Invite: ","")
-                vipro.findAndAddContactsByMid(midd)
-                vipro.inviteIntoGroup(msg.to,[midd])
+                ningxue.findAndAddContactsByMid(midd)
+                ningxue.inviteIntoGroup(msg.to,[midd])
 
             elif "Invite creator" in msg.text:
                 midd = "uda936836a9869eb86ec8ab992a4e8979"
-                vipro.inviteIntoGroup(msg.to,[midd])
+                ningxue.inviteIntoGroup(msg.to,[midd])
 
             elif msg.text in ["Welcome","welcome","Welkam","welkam","Wc","wc"]:
-                gs = vipro.getGroup(msg.to)
-                vipro.sendText(msg.to,"Selamat Datang Di "+ gs.name)
+                gs = ningxue.getGroup(msg.to)
+                ningxue.sendText(msg.to,"Selamat Datang Di "+ gs.name)
                 msg.contentType = 7
                 msg.contentMetadata={'STKID': '247',
                                     'STKPKGID': '3',
                                     'STKVER': '100'}
                 msg.text = None
-                vipro.sendMessage(msg)
+                ningxue.sendMessage(msg)
 
 	    elif "Bc: " in msg.text:
 		bc = msg.text.replace("Bc: ","")
-		gid = vipro.getGroupIdsJoined()
+		gid = ningxue.getGroupIdsJoined()
 		if msg.from_ in Creator:
 		    for i in gid:
-			vipro.sendText(i,"=======[BROADCAST]=======\n\n"+bc+"\n\nContact Me : line.me/ti/p/~nad_nad.")
-		    vipro.sendText(msg.to,"Success BC BosQ")
+			ningxue.sendText(i,"=======[BROADCAST]=======\n\n"+bc+"\n\nContact Me : line.me/ti/p/~nad_nad.")
+		    ningxue.sendText(msg.to,"Success BC BosQ")
 		else:
-		    vipro.sendText(msg.to,"Khusus Admin")
+		    ningxue.sendText(msg.to,"Khusus Admin")
 
             elif msg.text in ["Cancel"]:
-                gid = vipro.getGroupIdsInvited()
+                gid = ningxue.getGroupIdsInvited()
                 for i in gid:
-                    vipro.rejectGroupInvitation(i)
-                vipro.sendText(msg.to,"All invitations have been refused")
+                    ningxue.rejectGroupInvitation(i)
+                ningxue.sendText(msg.to,"All invitations have been refused")
 
             elif msg.text in ["Gurl"]:
                 if msg.toType == 2:
-                    x = vipro.getGroup(msg.to)
+                    x = ningxue.getGroup(msg.to)
                     if x.preventJoinByTicket == True:
                         x.preventJoinByTicket = False
-                        vipro.updateGroup(x)
-                    gurl = vipro.reissueGroupTicket(msg.to)
-                    vipro.sendText(msg.to,"line://ti/g/" + gurl)
+                        ningxue.updateGroup(x)
+                    gurl = ningxue.reissueGroupTicket(msg.to)
+                    ningxue.sendText(msg.to,"line://ti/g/" + gurl)
                 else:
                     if wait["lang"] == "JP":
-                        vipro.sendText(msg.to,"Can't be used outside the group")
+                        ningxue.sendText(msg.to,"Can't be used outside the group")
                     else:
                         vipro.sendText(msg.to,"Not for use less than group")
 
